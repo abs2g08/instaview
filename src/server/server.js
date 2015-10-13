@@ -11,8 +11,8 @@ app.set('view engine', 'jade');
 
 app.get('/*', function(req, res) {
   Router.run(routes, req.url, Handler => {
-    let content = React.renderToString(<Handler />);
-    res.render('index', { content: content });
+    const content = React.renderToString(<Handler />);
+    res.render('index', { content });
   });
 });
 
