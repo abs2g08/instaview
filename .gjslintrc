@@ -1,0 +1,10 @@
+{
+  "validateIndentation": 2,
+  "validateLineBreaks": false,
+  "maximumLineLength": 200,
+  "requireParenthesesAroundArrowParam": true,
+  "requireTrailingComma": false,
+  "esnext": true,
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+  "excludeFiles": ["lib/**", "node_modules/**"]
+}
