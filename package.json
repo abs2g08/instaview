@@ -40,5 +40,8 @@
     "react-router": "^0.13.4",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0"
+  },
+  "dependencies": {
+    "instagram-node": "^0.5.8"
   }
 }
