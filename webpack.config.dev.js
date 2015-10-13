@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 
-module.exports = {  
+module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
@@ -19,13 +19,25 @@ module.exports = {
   resolve: {
     extensions: ['', '.js']
   },
+  eslint: {
+      configFile: '.eslintrc',
+      failOnError: true
+  },
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        include: path.join(__dirname, 'src'),
+        exclude: path.join(__dirname, 'node_modules')
+      }
+    ],
     loaders: [
-      { 
+      {
         test: /\.jsx?$/,
         loaders: ['react-hot', 'babel-loader?experimental'],
         exclude: /node_modules/
       }
     ]
   }
-}
+};
