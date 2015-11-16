@@ -1,8 +1,9 @@
 import express from 'express';
 import React from 'react';
-import Router from 'react-router';
+import { renderToString } from 'react-dom/server';
+import { match, RoutingContext } from 'react-router';
 import routes from '../app/routes';
-import instagramNode from 'instagram-node'
+import instagramNode from 'instagram-node';
 
 const app = express();
 const api = instagramNode.instagram();
@@ -40,10 +41,17 @@ app.set('views', './');
 app.set('view engine', 'jade');
 
 app.get('/*', function(req, res) {
-  Router.run(routes, req.url, Handler => {
-    const content = React.renderToString(<Handler />);
-    res.render('index', { content });
-  });
+  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    if (error) {
+      res.status(500).send(error.message)
+    } else if (redirectLocation) {
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+    } else if (renderProps) {
+      res.status(200).send(renderToString(<RoutingContext {...renderProps} />))
+    } else {
+      res.status(404).send('Not found')
+    }
+  })
 });
 
 var server = app.listen(3000, function() {

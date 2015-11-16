@@ -1,7 +1,16 @@
-import { Route } from 'react-router';
 import React from 'react';
+import { Router, Route } from 'react-router';
+import { HomeView, AboutView} from './views';
 import App from './components/app';
 
 export default (
-  <Route handler={ App } path='/' />
+  <Router>
+    <Route path='/'
+        component={App}>
+      <Route path='home'
+        component={HomeView}/>
+      <Route path='about'
+        component={AboutView}/>
+    </Route>
+  </Router>
 );
