@@ -1,13 +1,23 @@
-import { homeActions } from '../actions';
+import alt from '../alt';
+import { HomeActions } from '../actions';
 
-export default class HomeStore {
+class HomeStore {
 
   constructor() {
-    this.bindActions(homeActions);
+    this.state = {
+      feed: 'test'
+    };
+
+    this.bindActions(HomeActions);
   }
 
   onGetFeed() {
-    return 'hello world';
+    console.log('whats up bra');
+    this.setState({
+      feed: 'mike'
+    });
   }
 
 }
+
+export default alt.createStore(HomeStore);
