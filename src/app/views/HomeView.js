@@ -20,10 +20,11 @@ class HomeView extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='home-view'>
         <span>This is the home view</span>
         <span>{this.props.feed}</span>
         <button onClick={this.onClick.bind(this)}>click me</button>
+        <a href='/authorize_user'>login</a>
       </div>
     );
   }

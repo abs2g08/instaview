@@ -1,2 +1,2 @@
 # instaview
-simple instagram viewer
+simple instagram viewer WIP (Work In Progress)
