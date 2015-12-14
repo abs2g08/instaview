@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server';
 import { match, RoutingContext } from 'react-router';
 import routes from '../app/routes';
 import instagramNode from 'instagram-node';
+import createLocation from 'history/lib/createLocation';
 
 const app = express();
 const api = instagramNode.instagram();
@@ -41,7 +42,8 @@ app.set('views', './');
 app.set('view engine', 'jade');
 
 app.get('/*', function(req, res) {
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  const location = createLocation(req.url);
+  match({ routes, location }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).send(error.message)
     } else if (redirectLocation) {
