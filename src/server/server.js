@@ -41,6 +41,15 @@ app.get('/handleauth', exports.handleauth);
 app.set('views', './');
 app.set('view engine', 'jade');
 
+app.get('/feed/self', function(req, res) {
+  api.user_self_feed([], function(err, medias, pagination) {
+    res.send({
+      medias,
+      pagination
+    });
+  });
+});
+
 app.get('/*', function(req, res) {
   const location = createMemoryHistory().createLocation(req.url);
   match({ routes, location }, (error, redirectLocation, renderProps) => {

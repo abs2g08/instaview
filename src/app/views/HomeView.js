@@ -14,8 +14,7 @@ class HomeView extends React.Component {
   }
 
   onClick() {
-    console.log('test mez');
-    HomeActions.getFeed();
+    HomeActions.getMyFeed();
   }
 
   render() {
