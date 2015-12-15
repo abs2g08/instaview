@@ -10,8 +10,8 @@ const app = express();
 const api = instagramNode.instagram();
 
 api.use({
-  client_id: 'YOUR_CLIENT_ID',
-  client_secret: 'YOUR_CLIENT_SECRET'
+  client_id: '158b444ca0074028bc72049470c0bc81',
+  client_secret: 'a471608714dd4a48b44875d74b4c2f7a'
 });
 
 var redirect_uri = 'http://localhost:3000/handleauth';
@@ -27,6 +27,9 @@ exports.handleauth = function(req, res) {
       res.send('Didnt work');
     } else {
       console.log(`Yay! Access token is ${result.access_token}`);
+      api.use({
+        access_token: result.access_token
+      });
       res.send('You made it!!');
     }
   });
@@ -46,6 +49,14 @@ app.get('/feed/self', function(req, res) {
     res.send({
       medias,
       pagination
+    });
+  });
+});
+
+app.get('/search_user', function(req, res) {
+  api.user_search('abs2g08', [], function(err, users) {
+    res.send({
+      users
     });
   });
 });

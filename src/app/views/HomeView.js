@@ -15,6 +15,7 @@ class HomeView extends React.Component {
 
   onClick() {
     HomeActions.getMyFeed();
+    HomeActions.searchUser();
   }
 
   render() {
@@ -22,6 +23,10 @@ class HomeView extends React.Component {
       <div className='home-view'>
         <span>This is the home view</span>
         <span>{this.props.feed}</span>
+        <span>
+          <input type='text'
+            name='search'/>
+        </span>
         <button onClick={this.onClick.bind(this)}>click me</button>
         <a href='/authorize_user'>login</a>
       </div>

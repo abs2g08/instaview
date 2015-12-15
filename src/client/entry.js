@@ -4,6 +4,8 @@ import routes from '../app/routes';
 import { Router } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
+import '../app/styles/vendor.scss';
+
 const history = createBrowserHistory();
 
 render(

@@ -6,11 +6,22 @@ class HomeStore {
   constructor() {
     this.state = {
       feed: [],
+      users: [],
       errorMsg: ''
     };
 
     this.registerAsync(HomeSource);
     this.bindActions(HomeActions);
+  }
+
+  onSearchUser() {
+    this.getInstance().searchUser();
+  }
+
+  onSearchUserSuccess(resp) {
+    this.setState({
+      users: resp.users
+    });
   }
 
   onGetMyFeed() {
@@ -21,7 +32,7 @@ class HomeStore {
     //debugger;
     this.setState({
       feed: resp.data
-    })
+    });
   }
 
   onGetMyFeedError(resp) {

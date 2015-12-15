@@ -8,6 +8,13 @@ const HomeSource = {
     },
     success: HomeActions.getMyFeedSuccess,
     error: HomeActions.getMyFeedError
+  },
+  searchUser: {
+    remote() {
+      return axios.get('/search_user');
+    },
+    success: HomeActions.searchUserSuccess,
+    error: HomeActions.searchUserError
   }
 };
 
