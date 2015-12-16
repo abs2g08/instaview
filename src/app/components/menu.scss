@@ -1,5 +1,5 @@
 @import "~compass-mixins/lib/_compass.scss";
-@import 'variables.scss';
+@import "variables.scss";
 
 /* HEADER */
 .header {
@@ -14,7 +14,7 @@
   background-color: $header-bg;
 }
 
-.header__logo {
+.header_logo {
   font-weight: 700;
   padding: 0 25px;
   float: left;
@@ -35,36 +35,21 @@
 
 /* RESPONSIVE */
 @media only screen and (max-width: 768px) {
-  .site-pusher,
-  .site-container {
+  .pusher,
+  .container {
     height: 100%;
   }
 
-  .site-container {
-    overflow: hidden;
-  }
-
-  .site-pusher {
+  .pusher {
     @include transition-duration(0.3s);
     @include transform(translateX(0px));
-  }
-
-  .site-content {
-    position: absolute;
-    top: 66px;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    padding-top: 0;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
   }
 
   .header {
     position: static;
   }
 
-  .header__icon {
+  .header_icon {
     position: relative;
     display: block;
     float: left;
@@ -81,7 +66,7 @@
       height: 0;
       top: 16px;
       left: 15px;
-      @include box-shadow(0 10px 0 1px #fff, 0 16px 0 1px #fff, 0 22px 0 1px #fff);
+      @include box-shadow(0 10px 0 1px $turquoise, 0 16px 0 1px $turquoise, 0 22px 0 1px $turquoise);
     }
   }
 
@@ -106,11 +91,11 @@
     }
   }
 
-  .with--sidebar {
-    .site-pusher {
+  .drawOpen {
+    .pusher {
       @include transform(translateX($menu-width));
     }
-    .site-cache {
+    .cache {
       position: absolute;
       top: 0;
       left: 0;

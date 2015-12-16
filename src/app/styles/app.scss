@@ -1,6 +1,18 @@
 @import "~compass-mixins/lib/_compass.scss";
+@import "variables.scss";
 
-.container {
-  @include clearfix;
-  margin: 0 20px;
+.app {
+  height: 100%;
+  background-color: $background;
+}
+
+.content {
+  position: absolute;
+  top: 66px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding-top: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
