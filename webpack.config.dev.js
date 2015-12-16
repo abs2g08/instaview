@@ -1,29 +1,40 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var config = require('./config');
 
-var port = '8080';
-var host = 'localhost';
+var liveReload = config.liveReload;
 
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
-    'webpack-dev-server/client?http://'+host+':'+port,
+    'webpack-dev-server/client?http://'+liveReload.host+':'+liveReload.port,
     'webpack/hot/only-dev-server',
     './src/client/entry'
   ],
   output: {
     path: __dirname + '/public',
     filename: 'app.js',
-    publicPath: 'http://'+host+':'+port+'/'
+    publicPath: 'http://'+liveReload.host+':'+liveReload.port+'/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin('style.css', { allChunks: true }),
     new webpack.NoErrorsPlugin()
   ],
-  resolve: {
-    extensions: ['', '.js']
+  resolve: function(directory) {
+    return {
+      extensions: ['', '.js'],
+      alias: {
+          actions: path.join(directory, 'src/app/actions'),
+          components: path.join(directory, 'src/app/components'),
+          sources: path.join(directory, 'src/app/sources'),
+          stores: path.join(directory, 'src/app/stores'),
+          const: path.join(directory, 'src/app/const'),
+          views: path.join(directory, 'src/app/views'),
+          styles: path.join(directory, 'src/app/styles')
+      }
+    };
   },
   eslint: {
     configFile: '.eslintrc',
