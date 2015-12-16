@@ -9,12 +9,15 @@ import createMemoryHistory from 'history/lib/createMemoryHistory';
 const app = express();
 const api = instagramNode.instagram();
 
+var port = 3000;
+var host = 'localhost';
+
 api.use({
   client_id: '158b444ca0074028bc72049470c0bc81',
   client_secret: 'a471608714dd4a48b44875d74b4c2f7a'
 });
 
-var redirect_uri = 'http://localhost:3000/handleauth';
+var redirect_uri = `http://${host}:${port}/handleauth`;
 
 exports.authorize_user = function(req, res) {
   res.redirect(api.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
@@ -77,9 +80,9 @@ app.get('/*', function(req, res) {
   })
 });
 
-var server = app.listen(3000, function() {
-  var host = server.address().address;
-  var port = server.address().port;
+var server = app.listen(port, function() {
+  var serverHost = server.address().address;
+  var serverPort = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('Example app listening at http://%s:%s', serverHost, serverPort);
 });

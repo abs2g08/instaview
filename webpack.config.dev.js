@@ -2,17 +2,20 @@ var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var port = '8080';
+var host = 'localhost';
+
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://'+host+':'+port,
     'webpack/hot/only-dev-server',
     './src/client/entry'
   ],
   output: {
     path: __dirname + '/public',
     filename: 'app.js',
-    publicPath: 'http://localhost:8080/'
+    publicPath: 'http://'+host+':'+port+'/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -25,6 +28,9 @@ module.exports = {
   eslint: {
     configFile: '.eslintrc',
     failOnError: true
+  },
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, 'src/app/styles')]
   },
   module: {
     preLoaders: [
@@ -48,3 +54,5 @@ module.exports = {
     ]
   }
 };
+
+console.log(path.resolve(__dirname, 'src/app/styles'));

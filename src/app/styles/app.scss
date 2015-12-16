@@ -1,0 +1,6 @@
+@import "~compass-mixins/lib/_compass.scss";
+
+.container {
+  @include clearfix;
+  margin: 0 20px;
+}
