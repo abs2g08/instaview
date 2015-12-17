@@ -8,8 +8,7 @@ export default class Menu extends React.Component {
 
         <a onClick={this.props.onClick}
           className='header_icon'
-          to='/'>
-        </a>
+          to='/'></a>
 
         <Link className='header_logo'
           to='/'>Instaview</Link>

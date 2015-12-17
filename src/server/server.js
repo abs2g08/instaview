@@ -58,7 +58,8 @@ app.get('/feed/self', function(req, res) {
 });
 
 app.get('/search_user', function(req, res) {
-  api.user_search('abs2g08', [], function(err, users) {
+  const q = req.query.q;
+  api.user_search(q, [], function(err, users) {
     res.send({
       users
     });

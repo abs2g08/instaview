@@ -10,8 +10,8 @@ const HomeSource = {
     error: HomeActions.getMyFeedError
   },
   searchUser: {
-    remote() {
-      return axios.get('/search_user');
+    remote(state, q) {
+      return axios.get('/search_user', { params: { q } });
     },
     success: HomeActions.searchUserSuccess,
     error: HomeActions.searchUserError
