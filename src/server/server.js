@@ -5,6 +5,8 @@ import { renderToString } from 'react-dom/server';
 import { match, RoutingContext } from 'react-router';
 import routes from '../app/routes';
 import instagramNode from 'instagram-node';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
 import createMemoryHistory from 'history/lib/createMemoryHistory';
 
 const app = express();
@@ -12,6 +14,10 @@ const api = instagramNode.instagram();
 
 const devServer = config.devServer;
 const liveReload = config.liveReload;
+
+app.use(cookieParser());
+
+app.use(session({secret:'somesecrettokenhere'}));
 
 api.use({
   client_id: '158b444ca0074028bc72049470c0bc81',
@@ -31,9 +37,7 @@ exports.handleauth = function(req, res) {
       res.send('Didnt work');
     } else {
       console.log(`Yay! Access token is ${result.access_token}`);
-      api.use({
-        access_token: result.access_token
-      });
+      req.session.access_token = result.access_token;
       res.send('You made it!!');
     }
   });
@@ -49,12 +53,24 @@ app.set('views', './');
 app.set('view engine', 'jade');
 
 app.get('/feed/self', function(req, res) {
-  api.user_self_feed([], function(err, medias, pagination) {
-    res.send({
-      medias,
-      pagination
+  console.log(`session: ${req.session.access_token}`);
+
+  if (req.session.access_token) {
+    api.use({
+      access_token: req.session.access_token
     });
-  });
+
+    api.user_self_feed([], function(err, medias, pagination) {
+      res.send({
+        medias,
+        pagination
+      });
+    });
+  } else {
+    res.status(403).send({
+      errorMsg: 'Please login first'
+    });
+  }
 });
 
 app.get('/search_user', function(req, res) {
@@ -70,14 +86,14 @@ app.get('/*', function(req, res) {
   const location = createMemoryHistory().createLocation(req.url);
   match({ routes, location }, (error, redirectLocation, renderProps) => {
     if (error) {
-      res.status(500).send(error.message)
+      res.status(500).send(error.message);
     } else if (redirectLocation) {
-      res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
       const content = renderToString(<RoutingContext {...renderProps} />);
       res.render('index', { content, liveReload });
     } else {
-      res.status(404).send('Not found')
+      res.status(404).send({ errorMsg: 'Not found' });
     }
   })
 });

@@ -11,6 +11,24 @@ user = {
   username: "abs2g08"
 };
 
+media = {
+  attribution: null,
+  caption: Object,
+  comments: Object,
+  created_time: "1448391722",
+  filter: "Mayfair",
+  id: "1125513800419451619_36424935",
+  images: Object,
+  likes: Object,
+  link: "https://www.instagram.com/p/-eoNaXzSLj/",
+  location: Object,
+  tags: Array[0],
+  type: "image",
+  user: Object,
+  user_has_liked: false,
+  users_in_photo: Array[0]
+};
+
 */
 
 class HomeStore {
@@ -35,19 +53,26 @@ class HomeStore {
     });
   }
 
+  onSearchUser(resp) {
+    this.setState({
+      errorMsg: resp.data.errorMsg
+    });
+  }
+
   onGetMyFeed() {
     this.getInstance().getMyFeed();
   }
 
   onGetMyFeedSuccess(resp) {
-    //debugger;
+    const data = resp.data;
+    debugger;
     this.setState({
-      feed: resp.data
+      medias: data.medias,
+      pagination: data.pagination
     });
   }
 
   onGetMyFeedError(resp) {
-    //debugger;
     this.setState({
       errorMsg: resp.data
     });

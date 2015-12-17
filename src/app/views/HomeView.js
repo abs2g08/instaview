@@ -15,13 +15,18 @@ class HomeView extends React.Component {
     };
   }
 
-  onClick() {
-    HomeActions.getMyFeed();
+  onSearch() {
     HomeActions.searchUser('abs2g08');
+  }
+
+  onFeed() {
+    HomeActions.getMyFeed();
   }
 
   render() {
     const users = this.props.homeStore.users || [];
+    const medias = this.props.homeStore.medias || [];
+
     return (
       <div className='home-view'>
         <span>This is the home view</span>
@@ -30,6 +35,7 @@ class HomeView extends React.Component {
           <input type='text'
             name='search'/>
         </span>
+        <span>Users:</span>
         <div>
           {
             users.map((user)=>{
@@ -45,7 +51,25 @@ class HomeView extends React.Component {
             })
           }
         </div>
-        <button onClick={this.onClick.bind(this)}>click me</button>
+        <span>Feed:</span>
+        <div>
+          {
+            medias.map((media)=>{
+              const user = media.user;
+              return (
+                <div>
+                  <span>{user.full_name}</span>
+                  <span>
+                    <img src={user.profile_picture}/>
+                  </span>
+                  <span>{user.username}</span>
+                </div>
+              );
+            })
+          }
+        </div>
+        <button onClick={this.onSearch.bind(this)}>search</button>
+        <button onClick={this.onFeed.bind(this)}>feed</button>
         <a href='/authorize_user'>login</a>
       </div>
     );
