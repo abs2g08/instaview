@@ -1,6 +1,6 @@
 import React from 'react';
-import { HomeActions } from '../actions';
-import { HomeStore } from '../stores';
+import { LoginActions, HomeActions } from '../actions';
+import { LoginStore, HomeStore } from '../stores';
 import connectToStores from 'alt/utils/connectToStores';
 
 class HomeView extends React.Component {
@@ -11,8 +11,13 @@ class HomeView extends React.Component {
 
   static getPropsFromStores() {
     return {
-      homeStore: HomeStore.getState()
+      homeStore: HomeStore.getState(),
+      loginStore: LoginStore.getState()
     };
+  }
+
+  componentDidMount() {
+    LoginActions.isLoggedIn();
   }
 
   onSearch() {
@@ -26,6 +31,9 @@ class HomeView extends React.Component {
   render() {
     const users = this.props.homeStore.users || [];
     const medias = this.props.homeStore.medias || [];
+    const myUser = this.props.loginStore.user || {};
+
+    debugger;
 
     return (
       <div className='home-view'>
@@ -35,6 +43,11 @@ class HomeView extends React.Component {
           <input type='text'
             name='search'/>
         </span>
+        <span>my user:</span>
+        <div>
+          <span>full name: {myUser.full_name}</span>
+          <span>user name: {myUser.username}</span>
+        </div>
         <span>Users:</span>
         <div>
           {

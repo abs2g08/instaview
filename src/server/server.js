@@ -34,11 +34,16 @@ exports.handleauth = function(req, res) {
   api.authorize_user(req.query.code, redirect_uri, function(err, result) {
     if (err) {
       console.log(err.body);
-      res.send('Didnt work');
+
+      res.send({
+        errorMsg: err.body
+      });
     } else {
       console.log(`Yay! Access token is ${result.access_token}`);
+
       req.session.access_token = result.access_token;
-      res.send('You made it!!');
+      req.session.user = result.user;
+      res.redirect('/home');
     }
   });
 };
@@ -80,6 +85,18 @@ app.get('/search_user', function(req, res) {
       users
     });
   });
+});
+
+app.get('/logged_in', function(req, res) {
+  if (req.session.access_token) {
+    const user = req.session.user;
+    res.send({ status: true, user});
+  } else {
+    res.send({
+      status: false,
+      user: null
+    });
+  }
 });
 
 app.get('/*', function(req, res) {

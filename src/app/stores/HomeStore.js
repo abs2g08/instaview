@@ -53,7 +53,7 @@ class HomeStore {
     });
   }
 
-  onSearchUser(resp) {
+  onSearchUserError(resp) {
     this.setState({
       errorMsg: resp.data.errorMsg
     });
@@ -65,7 +65,6 @@ class HomeStore {
 
   onGetMyFeedSuccess(resp) {
     const data = resp.data;
-    debugger;
     this.setState({
       medias: data.medias,
       pagination: data.pagination
