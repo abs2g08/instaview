@@ -6,7 +6,7 @@ import connectToStores from 'alt/utils/connectToStores';
 class HomeView extends React.Component {
 
   static getStores() {
-    return [HomeStore];
+    return [HomeStore, LoginStore];
   }
 
   static getPropsFromStores() {
@@ -33,8 +33,6 @@ class HomeView extends React.Component {
     const medias = this.props.homeStore.medias || [];
     const myUser = this.props.loginStore.user || {};
 
-    debugger;
-
     return (
       <div className='home-view'>
         <span>This is the home view</span>
@@ -51,9 +49,9 @@ class HomeView extends React.Component {
         <span>Users:</span>
         <div>
           {
-            users.map((user)=>{
+            users.map((user, index)=>{
               return (
-                <div>
+                <div key={`feed_user${index}`}>
                   <span>{user.full_name}</span>
                   <span>
                     <img src={user.profile_picture}/>
@@ -67,10 +65,10 @@ class HomeView extends React.Component {
         <span>Feed:</span>
         <div>
           {
-            medias.map((media)=>{
+            medias.map((media, index)=>{
               const user = media.user;
               return (
-                <div>
+                <div key={`media_${index}`}>
                   <span>{user.full_name}</span>
                   <span>
                     <img src={user.profile_picture}/>
