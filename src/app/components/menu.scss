@@ -3,21 +3,26 @@
 
 /* HEADER */
 .header {
-  position: fixed;
-  left: 0;
-  right: 0;
   height: 66px;
 
   line-height: 66px;
   color: #fff;
 
+  margin-bottom: 25px;
+
+  border-bottom: 1px solid $header-bb;
   background-color: $header-bg;
 }
 
 .header_logo {
   font-weight: 700;
-  padding: 0 25px;
+  padding: 0 15px 0px 0px;
   float: left;
+}
+
+.pusher {
+  height: 100%;
+  background-color: $background;
 }
 
 /* MENU */
@@ -35,18 +40,9 @@
 
 /* RESPONSIVE */
 @media only screen and (max-width: 768px) {
-  .pusher,
-  .container {
-    height: 100%;
-  }
-
   .pusher {
     @include transition-duration(0.3s);
     @include transform(translateX(0px));
-  }
-
-  .header {
-    position: static;
   }
 
   .header_icon {
@@ -94,14 +90,6 @@
   .drawOpen {
     .pusher {
       @include transform(translateX($menu-width));
-    }
-    .cache {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,0.6);
     }
   }
 }

@@ -1,23 +1,7 @@
-@import "~compass-mixins/lib/_compass.scss";
 @import "variables.scss";
 
-.app {
-  height: 100%;
-  background-color: $background;
-}
-
 .container {
-  max-width: 1180px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.content {
-  position: absolute;
-  top: 66px;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
 }
