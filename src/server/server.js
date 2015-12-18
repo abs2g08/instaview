@@ -8,6 +8,7 @@ import instagramNode from 'instagram-node';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import createMemoryHistory from 'history/lib/createMemoryHistory';
+import Iso from 'iso';
 
 const app = express();
 const api = instagramNode.instagram();
@@ -17,7 +18,7 @@ const liveReload = config.liveReload;
 
 app.use(cookieParser());
 
-app.use(session({secret:'somesecrettokenhere'}));
+app.use(session({ secret:'somesecrettokenhere'  }));
 
 api.use({
   client_id: '158b444ca0074028bc72049470c0bc81',
@@ -101,6 +102,7 @@ app.get('/logged_in', function(req, res) {
 
 app.get('/*', function(req, res) {
   const location = createMemoryHistory().createLocation(req.url);
+
   match({ routes, location }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).send(error.message);
@@ -108,7 +110,21 @@ app.get('/*', function(req, res) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
       const content = renderToString(<RoutingContext {...renderProps} />);
-      res.render('index', { content, liveReload });
+      const iso = new Iso();
+
+      if (req.session.access_token) {
+        iso.add(content, {
+          isLoggedIn: true,
+          user: req.session.user
+        });
+      } else {
+        iso.add(content, {
+          isLoggedIn: false,
+          user: null
+        });
+      }
+
+      res.render('index', { content: iso.render(), liveReload });
     } else {
       res.status(404).send({ errorMsg: 'Not found' });
     }

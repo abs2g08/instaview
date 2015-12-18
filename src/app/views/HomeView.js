@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginActions, HomeActions } from '../actions';
+import { HomeActions } from '../actions';
 import { LoginStore, HomeStore } from '../stores';
 import connectToStores from 'alt/utils/connectToStores';
 
@@ -14,10 +14,6 @@ class HomeView extends React.Component {
       homeStore: HomeStore.getState(),
       loginStore: LoginStore.getState()
     };
-  }
-
-  componentDidMount() {
-    LoginActions.isLoggedIn();
   }
 
   onSearch() {
