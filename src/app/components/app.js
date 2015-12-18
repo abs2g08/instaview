@@ -11,7 +11,7 @@ export default class App extends React.Component {
     }
   }
 
-  onClick(e) {
+  onToggle(e) {
     e.preventDefault();
 
     this.setState({
@@ -19,15 +19,24 @@ export default class App extends React.Component {
     });
   };
 
+  closeDraw() {
+    if (this.state.drawOpen) {
+      this.setState({
+        drawOpen: false
+      });
+    }
+  }
+
   render() {
     const drawOpen = this.state.drawOpen;
     const containerClass = classNames('app', { drawOpen });
 
     return (
       <div className={containerClass}>
-        <div className='pusher'>
-          <Menu onClick={this.onClick.bind(this)}/>
-          <div className='content container'>
+        <div className='pusher'
+          onClick={this.closeDraw.bind(this)}>
+          <Menu onClick={this.onToggle.bind(this)}/>
+          <div className='container content'>
             {this.props.children}
           </div>
         </div>
