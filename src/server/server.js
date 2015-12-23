@@ -124,9 +124,14 @@ app.get('/*', function(req, res) {
         });
       }
 
-      res.render('index', { content: iso.render(), liveReload });
+      res.render('index', {
+        content: iso.render(),
+        liveReload
+      });
     } else {
-      res.status(404).send({ errorMsg: 'Not found' });
+      res.status(404).send({
+        errorMsg: 'Not found'
+      });
     }
   })
 });

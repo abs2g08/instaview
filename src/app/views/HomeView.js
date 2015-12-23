@@ -1,6 +1,7 @@
 import React from 'react';
-import { HomeActions } from '../actions';
 import { LoginStore, HomeStore } from '../stores';
+import { PleaseLogin, Feed } from '../components';
+import { HomeActions } from '../actions';
 import connectToStores from 'alt/utils/connectToStores';
 
 class HomeView extends React.Component {
@@ -16,68 +17,28 @@ class HomeView extends React.Component {
     };
   }
 
-  onSearch() {
-    HomeActions.searchUser('abs2g08');
-  }
-
-  onFeed() {
-    HomeActions.getMyFeed();
+  componentDidMount() {
+    if(this.props.loginStore.isLoggedIn) {
+      HomeActions.getMyFeed();
+    }
   }
 
   render() {
-    const users = this.props.homeStore.users || [];
     const medias = this.props.homeStore.medias || [];
     const myUser = this.props.loginStore.user || {};
 
+    let content;
+    if(this.props.loginStore.isLoggedIn) {
+      content = <Feed medias={medias} myUser={myUser}/>
+    } else {
+      content = <PleaseLogin/>;
+    }
+
     return (
       <div className='home-view'>
-        <span>This is the home view</span>
-        <span>{this.props.feed}</span>
-        <span>
-          <input type='text'
-            name='search'/>
-        </span>
-        <span>my user:</span>
         <div>
-          <span>full name: {myUser.full_name}</span>
-          <span>user name: {myUser.username}</span>
+          {content}
         </div>
-        <span>Users:</span>
-        <div>
-          {
-            users.map((user, index)=>{
-              return (
-                <div key={`feed_user${index}`}>
-                  <span>{user.full_name}</span>
-                  <span>
-                    <img src={user.profile_picture}/>
-                  </span>
-                  <span>{user.username}</span>
-                </div>
-              );
-            })
-          }
-        </div>
-        <span>Feed:</span>
-        <div>
-          {
-            medias.map((media, index)=>{
-              const user = media.user;
-              return (
-                <div key={`media_${index}`}>
-                  <span>{user.full_name}</span>
-                  <span>
-                    <img src={user.profile_picture}/>
-                  </span>
-                  <span>{user.username}</span>
-                </div>
-              );
-            })
-          }
-        </div>
-        <button onClick={this.onSearch.bind(this)}>search</button>
-        <button onClick={this.onFeed.bind(this)}>feed</button>
-        <a href='/authorize_user'>login</a>
       </div>
     );
   }

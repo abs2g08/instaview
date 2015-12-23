@@ -35,28 +35,11 @@ class HomeStore {
   constructor() {
     this.state = {
       feed: [],
-      users: [],
       errorMsg: ''
     };
 
     this.registerAsync(HomeSource);
     this.bindActions(HomeActions);
-  }
-
-  onSearchUser(q) {
-    this.getInstance().searchUser(q);
-  }
-
-  onSearchUserSuccess(resp) {
-    this.setState({
-      users: resp.data.users
-    });
-  }
-
-  onSearchUserError(resp) {
-    this.setState({
-      errorMsg: resp.data.errorMsg
-    });
   }
 
   onGetMyFeed() {

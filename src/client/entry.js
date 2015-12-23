@@ -8,6 +8,7 @@ import Iso from 'iso';
 
 // App styles
 import '../app/components/menu.scss';
+import '../app/components/feed.scss';
 
 // Redundant includes to trigger live reload
 import '../app/styles/vendor.scss';

@@ -16,7 +16,10 @@ export default class Menu extends React.Component {
 
           <nav className='menu'>
             <Link to='/home'>home</Link>
+            <Link to='/search'>search</Link>
             <Link to='/about'>about</Link>
+            <a className='login'
+              href='/authorize_user'>login</a>
           </nav>
 
         </div>

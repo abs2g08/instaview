@@ -8,13 +8,6 @@ const HomeSource = {
     },
     success: HomeActions.getMyFeedSuccess,
     error: HomeActions.getMyFeedError
-  },
-  searchUser: {
-    remote(state, q) {
-      return axios.get('/search_user', { params: { q } });
-    },
-    success: HomeActions.searchUserSuccess,
-    error: HomeActions.searchUserError
   }
 };
 

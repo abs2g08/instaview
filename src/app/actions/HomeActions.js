@@ -5,10 +5,7 @@ class HomeActions {
     this.generateActions(
       'getMyFeed',
       'getMyFeedSuccess',
-      'getMyFeedError',
-      'searchUser',
-      'searchUserSuccess',
-      'searchUserError'
+      'getMyFeedError'
     )
   }
 }
