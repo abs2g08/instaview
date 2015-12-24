@@ -9,10 +9,7 @@ export default class Feed extends React.Component {
   }
 
   render() {
-    const medias = this.props.medias
-    //const myUser = this.props.myUser;
-
-    // Hello {myUser.username}
+    const medias = this.props.medias;
 
     return (
       <section className='feed'>

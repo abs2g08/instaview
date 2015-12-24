@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import urls from '../const/urls';
+import classNames from 'classnames';
 
 /*
   attribution: null
@@ -21,11 +22,41 @@ import urls from '../const/urls';
 */
 
 export default class FeedItem extends React.Component {
+  renderLikes(likesList) {
+    if (likesList > 1) {
+      return likesList.map((like, index)=> {
+        const username = like.username;
+        const url = urls.user(username);
+        const count = likesList.length - 1;
+
+        let result;
+        if (count !== index) {
+          result = <a href={url} className='like'>{username}, </a>;
+        } else {
+          result = (
+            <span>
+              and <a href={url} className='like'> {username}</a> likes
+            </span>
+          );
+        }
+        return result;
+      });
+    } else {
+      const like = likesList[0];
+      const url = urls.user(like.username);
+      return (
+        <span>
+          <a href={url} className='like'>{like.username}</a> likes
+        </span>
+      );
+    }
+  }
+
   render() {
     const id = this.props.media.id;
 
     let caption = this.props.media.caption;
-    caption = caption ? caption.text :  'No caption';
+    caption = caption ? caption.text :  'this';
 
     let createdTime = this.props.media.created_time;
     createdTime = moment.unix(createdTime).fromNow();
@@ -42,13 +73,21 @@ export default class FeedItem extends React.Component {
 
     const likesList = this.props.media.likes.data;
 
+    const feedLikesClass = classNames('feed-likes', { hidden: likesList.length === 0 })
+
     return (
       <article className='feed-item' data-id={id}>
         <header className='feed-item-header'>
-          <img className='feed-profimg' src={user.profile_picture} alt=''/>
+          <img className='feed-profimg'
+            src={user.profile_picture}
+            alt=''/>
           <div className='feed-meta'>
-            <a href={user.url} className='feed-username'>{user.username}</a>
-            <a href={location.url} className='feed-location'>{location.name}</a>
+            <a href={user.url} className='feed-username'>
+              {user.username}
+            </a>
+            <a href={location.url} className='feed-location'>
+              {location.name}
+            </a>
           </div>
           <span className='feed-time'>{createdTime}</span>
         </header>
@@ -58,33 +97,13 @@ export default class FeedItem extends React.Component {
             height={image.height}/>
         </span>
         <footer className='feed-item-footer'>
-          <div className='feed-likes'>
-            {
-              likesList.map((like, index)=> {
-                const username = like.username;
-                const url = urls.user(username);
-                const count = likesList.length - 1;
-
-                let result;
-                if (count !== index) {
-                  result = <a href={url} className='like'>{username}, </a>;
-                } else {
-                  result = (
-                    <span>
-                      and <a href={url} className='like'> {username}</a> likes
-                    </span>
-                  );
-                }
-                return result;
-              })
-            }
+          <div className={feedLikesClass}>
+            { this.renderLikes(likesList) }
             <span className='feed-caption'>
             { ` ${caption}` }
             </span>
           </div>
-          <div className='feed-comment'>
-
-          </div>
+          <div className='feed-comment'></div>
         </footer>
       </article>
     );
