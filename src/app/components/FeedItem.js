@@ -25,7 +25,7 @@ export default class FeedItem extends React.Component {
     const id = this.props.media.id;
 
     let caption = this.props.media.caption;
-    caption= caption ? caption.text :  'No caption';
+    caption = caption ? caption.text :  'No caption';
 
     let createdTime = this.props.media.created_time;
     createdTime = moment.unix(createdTime).fromNow();
@@ -39,6 +39,8 @@ export default class FeedItem extends React.Component {
     let location = this.props.media.location;
     location = location || { name: 'No location', id: '' };
     location.url = urls.explore(location.id);
+
+    const likesList = this.props.media.likes.data;
 
     return (
       <article className='feed-item' data-id={id}>
@@ -55,6 +57,35 @@ export default class FeedItem extends React.Component {
             width={image.width}
             height={image.height}/>
         </span>
+        <footer className='feed-item-footer'>
+          <div className='feed-likes'>
+            {
+              likesList.map((like, index)=> {
+                const username = like.username;
+                const url = urls.user(username);
+                const count = likesList.length - 1;
+
+                let result;
+                if (count !== index) {
+                  result = <a href={url} className='like'>{username}, </a>;
+                } else {
+                  result = (
+                    <span>
+                      and <a href={url} className='like'> {username}</a> likes
+                    </span>
+                  );
+                }
+                return result;
+              })
+            }
+            <span className='feed-caption'>
+            { ` ${caption}` }
+            </span>
+          </div>
+          <div className='feed-comment'>
+
+          </div>
+        </footer>
       </article>
     );
   }

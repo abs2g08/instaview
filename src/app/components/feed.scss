@@ -21,18 +21,26 @@
     @include border-radius(50%);
   }
 
-  a {
-    display: block;
-  }
-
   .feed-username {
     font-weight: bold;
   }
 
   .feed-meta {
+    a {
+      display: block;
+    }
+
     line-height: 15px;
     padding-left: 10px;
     display: inline-block;
+  }
+
+  .feed-item-footer {
+    padding: 0 24px;
+  }
+
+  .feed-likes {
+    margin: 20px 0;
   }
 
   .feed-time {

@@ -20,7 +20,7 @@ const history = createBrowserHistory();
 
 // boostrap flux stores
 Iso.bootstrap((state) => {
-  console.log(state);
+  console.log('bootsrapping data...');
   alt.bootstrap(JSON.stringify({
     LoginStore: {
       isLoggedIn: state.isLoggedIn,

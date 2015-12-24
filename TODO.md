@@ -7,3 +7,5 @@ Add svg loader for ajax
 Fix hotreload bug
 
 Add infinite scrolling to home page
+
+Break server.js into multiple files

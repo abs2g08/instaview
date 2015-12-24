@@ -10,12 +10,13 @@ export default class Feed extends React.Component {
 
   render() {
     const medias = this.props.medias
-    const myUser = this.props.myUser;
+    //const myUser = this.props.myUser;
+
+    // Hello {myUser.username}
 
     return (
       <section className='feed'>
         <span className='feed-header'>
-          Hello {myUser.username}
         </span>
         <div className='feed-content'>
         {
