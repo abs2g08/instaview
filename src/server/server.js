@@ -10,6 +10,13 @@ import session from 'express-session';
 import createMemoryHistory from 'history/lib/createMemoryHistory';
 import Iso from 'iso';
 
+var initAPI = function() {
+  api.use({
+    client_id: '158b444ca0074028bc72049470c0bc81',
+    client_secret: 'a471608714dd4a48b44875d74b4c2f7a'
+  });
+}
+
 const app = express();
 const api = instagramNode.instagram();
 
@@ -20,12 +27,9 @@ app.use(cookieParser());
 
 app.use(session({ secret:'somesecrettokenhere'  }));
 
-api.use({
-  client_id: '158b444ca0074028bc72049470c0bc81',
-  client_secret: 'a471608714dd4a48b44875d74b4c2f7a'
-});
-
 var redirect_uri = `http://${devServer.host}:${devServer.port}/handleauth`;
+
+initAPI();
 
 exports.authorize_user = function(req, res) {
   res.redirect(api.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
@@ -98,6 +102,13 @@ app.get('/logged_in', function(req, res) {
       user: null
     });
   }
+});
+
+app.get('/logout', function(req, res) {
+  req.session.access_token = null;
+  req.session.user = null;
+  initAPI();
+  res.redirect('/home');
 });
 
 app.get('/*', function(req, res) {
