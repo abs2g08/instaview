@@ -1,7 +1,42 @@
+@import "node_modules/compass-mixins/lib/_compass.scss";
 @import "variables.scss";
 
 .feed {
-    .feed-time {
-      color: $gray-lt;
-    }
+  .feed-item {
+    font-size: 15px;
+    background-color: $white;
+    border: 1px solid $gray-ltr;
+    margin-bottom: 50px;
+    border-radius: 3px;
+  }
+
+  .feed-item-header {
+    height: 64px;
+    padding: 14px 20px;
+  }
+
+  .feed-profimg {
+    vertical-align: top;
+    width: 28px;
+    @include border-radius(50%);
+  }
+
+  a {
+    display: block;
+  }
+
+  .feed-username {
+    font-weight: bold;
+  }
+
+  .feed-meta {
+    line-height: 15px;
+    padding-left: 10px;
+    display: inline-block;
+  }
+
+  .feed-time {
+    float: right;
+    color: $gray-lt;
+  }
 }

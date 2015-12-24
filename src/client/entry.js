@@ -9,6 +9,7 @@ import Iso from 'iso';
 // App styles
 import '../app/components/menu.scss';
 import '../app/components/feed.scss';
+import '../app/components/please-login.scss';
 
 // Redundant includes to trigger live reload
 import '../app/styles/vendor.scss';

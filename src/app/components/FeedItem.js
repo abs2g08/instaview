@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import urls from '../const/urls';
 
 /*
   attribution: null
@@ -21,25 +22,33 @@ import moment from 'moment';
 
 export default class FeedItem extends React.Component {
   render() {
-    const caption = this.props.media.caption ? this.props.media.caption.text :  'No caption';
+    let  caption = this.props.media.caption;
+    caption= caption ? caption.text :  'No caption';
 
-    let createdTime = this.props.media.created_time || '1448027148';
+    let createdTime = this.props.media.created_time;
     createdTime = moment.unix(createdTime).fromNow();
 
-    const id = this.props.media.id || null;
+    const id = this.props.media.id;
 
     const user = this.props.media.user;
+    user.url = urls.user(user.username);
 
     let image = this.props.media.images.standard_resolution;
     image = image || { height: 640, url: '', width: 640 };
 
+    let location = this.props.media.location;
+    location = location || { name: 'No location', id: '' };
+    location.url = urls.explore(location.id);
+
     return (
       <article className='feed-item' data-id={id}>
-        <header>
-          <span className='feed-caption'>{caption}</span>
+        <header className='feed-item-header'>
+          <img className='feed-profimg' src={user.profile_picture} alt=''/>
+          <div className='feed-meta'>
+            <a href={user.url} className='feed-username'>{user.username}</a>
+            <a href={location.url} className='feed-location'>{location.name}</a>
+          </div>
           <span className='feed-time'>{createdTime}</span>
-          <span className='feed-username'>{user.username}</span>
-          <img src={user.profile_picture} alt='' className='feed-profile-img'/>
         </header>
         <span>
           <img className='feed-image' src={image.url}
