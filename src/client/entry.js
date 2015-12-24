@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import routes from '../app/routes';
+import Routes from '../app/Routes';
 import { Router } from 'react-router';
 import alt from '../app/alt';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
@@ -31,7 +31,7 @@ Iso.bootstrap((state) => {
 
 render(
   <Router history={history}>
-    {routes}
+    {Routes}
   </Router>,
   document.getElementById('app')
 )

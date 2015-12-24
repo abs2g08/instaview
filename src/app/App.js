@@ -1,7 +1,7 @@
 import React from 'react';
-import Menu from './Menu';
 import classNames from 'classnames';
-import { LoginStore } from '../stores';
+import { Menu } from './components';
+import { LoginStore } from './stores';
 import connectToStores from 'alt/utils/connectToStores';
 
 class App extends React.Component {

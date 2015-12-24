@@ -22,13 +22,13 @@ import urls from '../const/urls';
 
 export default class FeedItem extends React.Component {
   render() {
-    let  caption = this.props.media.caption;
+    const id = this.props.media.id;
+
+    let caption = this.props.media.caption;
     caption= caption ? caption.text :  'No caption';
 
     let createdTime = this.props.media.created_time;
     createdTime = moment.unix(createdTime).fromNow();
-
-    const id = this.props.media.id;
 
     const user = this.props.media.user;
     user.url = urls.user(user.username);
