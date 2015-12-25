@@ -46,6 +46,7 @@
   "dependencies": {
     "alt": "0.17.9",
     "axios": "0.8.0",
+    "breakpoint-sass": "2.6.1",
     "classnames": "2.2.1",
     "compass-mixins": "0.12.7",
     "cookie-parser": "1.4.0",

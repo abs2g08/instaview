@@ -13,3 +13,9 @@ $green: #04ff32;
 $gray-lt: #d8d8d8;
 $gray-ltr: #edeeee;
 $white: #fff;
+
+// http://foundation.zurb.com/sites/docs/v/5.5.3/media-queries.html
+$s-breakpoint:  em-calc(640)  !default;
+$m-breakpoint: em-calc(1024) !default;
+$l-breakpoint:  em-calc(1440) !default;
+$xl-breakpoint: em-calc(1920) !default;

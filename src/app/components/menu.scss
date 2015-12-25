@@ -1,3 +1,4 @@
+@import "~breakpoint-sass/stylesheets/_breakpoint.scss";
 @import "~compass-mixins/lib/_compass.scss";
 @import "variables.scss";
 
@@ -41,8 +42,10 @@
   }
 }
 
+$bp: 0px 768px;
+
 /* RESPONSIVE */
-@media only screen and (max-width: 768px) {
+@include breakpoint($bp) {
   .pusher {
     @include transition-duration(0.3s);
     @include transform(translateX(0px));

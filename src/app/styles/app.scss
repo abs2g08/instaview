@@ -1,4 +1,5 @@
 @import "variables.scss";
+@import "~breakpoint-sass/stylesheets/breakpoint";
 
 .container {
   max-width: 600px;
@@ -21,3 +22,21 @@ span {
 p {
   font-size: $font-size;
 }
+
+// @include breakpoint($s-breakpoint) {
+//   html {
+//     background-color: #fff;
+//   }
+// }
+
+// @include breakpoint($m-breakpoint) {
+//   html {
+//     background-color: #fff;
+//   }
+// }
+
+// @include breakpoint($l-breakpoint) {
+//   html {
+//     background-color: #fff;
+//   }
+// }
