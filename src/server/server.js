@@ -25,7 +25,11 @@ const liveReload = config.liveReload;
 
 app.use(cookieParser());
 
-app.use(session({ secret:'somesecrettokenhere'  }));
+app.use(session({
+  secret:'somesecrettokenhere',
+  resave: true,
+  saveUninitialized: true
+}));
 
 var redirect_uri = `http://${devServer.host}:${devServer.port}/handleauth`;
 

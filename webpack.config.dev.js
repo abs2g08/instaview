@@ -4,22 +4,24 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var config = require('./config');
 
 var liveReload = config.liveReload;
+var filename = config.filename;
 
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'webpack-dev-server/client?http://'+liveReload.host+':'+liveReload.port,
-    'webpack/hot/only-dev-server',
+    //'webpack/hot/only-dev-server', **doesn't** work with ExtractTextPlugin
+    'webpack/hot/dev-server',
     './src/client/entry'
   ],
   output: {
     path: __dirname + '/public',
-    filename: 'app.js',
+    filename: filename.app,
     publicPath: 'http://'+liveReload.host+':'+liveReload.port+'/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('style.css', { allChunks: true }),
+    new ExtractTextPlugin(filename.style, { allChunks: true }),
     new webpack.NoErrorsPlugin()
   ],
   resolve: function(directory) {

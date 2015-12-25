@@ -6,5 +6,9 @@ module.exports = {
   devServer: {
     port: 3000,
     host: 'localhost'
+  },
+  filename: {
+    app: 'app.js',
+    style: 'style.css'
   }
 };
