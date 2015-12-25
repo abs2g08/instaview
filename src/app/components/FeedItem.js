@@ -23,19 +23,20 @@ import classNames from 'classnames';
 
 export default class FeedItem extends React.Component {
   renderLikes(likesList) {
-    if (likesList > 1) {
+    if (likesList.length > 1) {
       return likesList.map((like, index)=> {
         const username = like.username;
         const url = urls.user(username);
         const count = likesList.length - 1;
+        const key = `like_${like.id}`;
 
         let result;
         if (count !== index) {
-          result = <a href={url} className='like'>{username}, </a>;
+          result = <a href={url} className='like' key={key}>{username}, </a>;
         } else {
           result = (
             <span>
-              and <a href={url} className='like'> {username}</a> likes
+              and <a href={url} className='like' key={key}> {username}</a> likes
             </span>
           );
         }
@@ -44,10 +45,48 @@ export default class FeedItem extends React.Component {
     } else {
       const like = likesList[0];
       const url = urls.user(like.username);
+      const key = `like_${like.id}`;
+
       return (
         <span>
-          <a href={url} className='like'>{like.username}</a> likes
+          <a href={url} className='like' key={key}>{like.username}</a> likes
         </span>
+      );
+    }
+  }
+
+  renderComments(commentsList) {
+    if (commentsList.length > 0) {
+      const list = commentsList.map((comment)=> {
+        const text = ` ${comment.text}`;
+        const username = comment.from.username;
+        const key = `comment_${comment.id}`;
+        const url = urls.user(username);
+
+        return (
+          <li className='comment-item' key={key}>
+            <span>
+              <a href={url} className='comment-username'>
+                {username}
+              </a>
+            </span>
+            <span>
+              {text}
+            </span>
+          </li>
+        );
+      });
+
+      return (
+        <ul className='comment-list'>
+          {list}
+        </ul>
+      );
+    } else {
+      return (
+        <div className='hidden'>
+          No comments
+        </div>
       );
     }
   }
@@ -57,6 +96,8 @@ export default class FeedItem extends React.Component {
 
     let caption = this.props.media.caption;
     caption = caption ? caption.text :  'this';
+
+    const comments = this.props.media.comments.data;
 
     let createdTime = this.props.media.created_time;
     createdTime = moment.unix(createdTime).fromNow();
@@ -73,8 +114,8 @@ export default class FeedItem extends React.Component {
 
     const likesList = this.props.media.likes.data;
 
-    const feedLikesClass = classNames('feed-likes', { hidden: likesList.length === 0 })
-
+    const feedLikesClass = classNames('feed-likes', { hidden: likesList.length === 0 });
+    //            {this.renderLikes(likesList)}
     return (
       <article className='feed-item' data-id={id}>
         <header className='feed-item-header'>
@@ -98,12 +139,12 @@ export default class FeedItem extends React.Component {
         </span>
         <footer className='feed-item-footer'>
           <div className={feedLikesClass}>
-            { this.renderLikes(likesList) }
+            {this.renderLikes(likesList)}
             <span className='feed-caption'>
-            { ` ${caption}` }
+            {` ${caption}`}
             </span>
           </div>
-          <div className='feed-comment'></div>
+          {this.renderComments(comments)}
         </footer>
       </article>
     );
