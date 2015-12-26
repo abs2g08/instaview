@@ -1,6 +1,7 @@
 /* VARIABLES */
 
-$font-size: 15px;
+$s-font-size: 14px;
+$m-font-size: 15px;
 
 $header-bg: #fff;
 $header-bb: #eee;
@@ -15,7 +16,7 @@ $gray-ltr: #edeeee;
 $white: #fff;
 
 // http://foundation.zurb.com/sites/docs/v/5.5.3/media-queries.html
-$s-breakpoint:  em-calc(640)  !default;
-$m-breakpoint: em-calc(1024) !default;
-$l-breakpoint:  em-calc(1440) !default;
-$xl-breakpoint: em-calc(1920) !default;
+$s-breakpoint:  34em;
+$m-breakpoint: 48em;
+$l-breakpoint:  62em;
+$xl-breakpoint: 75em;

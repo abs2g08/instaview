@@ -9,3 +9,5 @@ Fix hotreload bug
 Add infinite scrolling to home page
 
 Break server.js into multiple files
+
+Convert all em & rem to px
