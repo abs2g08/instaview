@@ -4,11 +4,11 @@ export default class PleaseLogin extends React.Component {
   render() {
     return (
       <article className='please-login'>
-        <span>You need to be logged in to view your feed</span>
-        <div>
+        <p>You need to be logged in to view your feed</p>
+        <p>
           <a className='login button'
             href='/authorize_user'>login</a>
-        </div>
+        </p>
       </article>
     );
   }

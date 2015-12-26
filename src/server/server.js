@@ -22,6 +22,7 @@ const api = instagramNode.instagram();
 
 const devServer = config.devServer;
 const liveReload = config.liveReload;
+const filename = config.filename;
 
 app.use(cookieParser());
 
@@ -140,8 +141,11 @@ app.get('/*', function(req, res) {
       }
 
       res.render('index', {
-        content: iso.render(),
-        liveReload
+        args: {
+          liveReload,
+          filename
+        },
+        content: iso.render()
       });
     } else {
       res.status(404).send({

@@ -6,9 +6,17 @@
   display: none;
 }
 
+p {
+  margin: 0px 10px;
+}
+
 @include setFontSize($s-font-size);
 
 @include breakpoint($s-breakpoint) {
+  p {
+    margin: 0px 0px;
+  }
+
   .container {
     max-width: 600px;
     margin: 0 auto;
