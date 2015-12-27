@@ -25,14 +25,14 @@ class SearchView extends React.Component {
 
     return (
       <div className='search-view'>
-        <span>This is the home view</span>
+        <p>This is the home view</p>
         <span>{this.props.feed}</span>
-        <span>
+        <p>
           <input type='text'
             name='search'/>
-        </span>
-        <span>Users:</span>
-        <div>
+        </p>
+        <p>Users:</p>
+        <p>
           {
             users.map((user, index)=>{
               return (
@@ -46,8 +46,10 @@ class SearchView extends React.Component {
               );
             })
           }
-        </div>
-        <button onClick={this.onSearch.bind(this)}>search</button>
+        </p>
+        <p>
+          <button onClick={this.onSearch.bind(this)}>search</button>
+        </p>
       </div>
     );
   }

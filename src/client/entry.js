@@ -6,6 +6,9 @@ import alt from '../app/alt';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import Iso from 'iso';
 
+// Favicon
+import '../../favicon.ico';
+
 // App styles
 import '../app/components/menu.scss';
 import '../app/components/feed.scss';

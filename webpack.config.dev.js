@@ -56,6 +56,11 @@ module.exports = {
     ],
     loaders: [
       {
+        test: /\.ico$/,
+        loader: 'url-loader',
+        query: { mimetype: "image/x-icon" }
+      },
+      {
         test: /\.jsx?$/,
         loaders: ['react-hot', 'babel-loader?experimental'],
         exclude: /node_modules/
