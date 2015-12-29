@@ -1,6 +1,7 @@
 import React from 'react';
 import FeedItem from './FeedItem';
 import { HomeActions } from '../actions';
+import classNames from 'classnames';
 
 export default class Feed extends React.Component {
 
@@ -10,6 +11,7 @@ export default class Feed extends React.Component {
 
   render() {
     const medias = this.props.medias;
+    const buttonClass = classNames({ hidden: medias.length === 0 });
 
     return (
       <section className='feed'>
@@ -24,7 +26,11 @@ export default class Feed extends React.Component {
           })
         }
         </div>
-        <button onClick={this.onFeedRefresh.bind(this)}>refresh</button>
+        <button
+          onClick={this.onFeedRefresh.bind(this)}
+          className={buttonClass}>
+          refresh
+        </button>
       </section>
     );
   }

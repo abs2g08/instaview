@@ -3,6 +3,7 @@ import { LoginStore, HomeStore } from '../stores';
 import { PleaseLogin, Feed } from '../components';
 import { HomeActions } from '../actions';
 import connectToStores from 'alt/utils/connectToStores';
+import classNames from 'classnames';
 
 class HomeView extends React.Component {
 
@@ -26,6 +27,7 @@ class HomeView extends React.Component {
   render() {
     const medias = this.props.homeStore.medias || [];
     const myUser = this.props.loginStore.user || {};
+    const loading = this.props.homeStore.loading || false;
 
     let content;
     if(this.props.loginStore.isLoggedIn) {
@@ -34,10 +36,15 @@ class HomeView extends React.Component {
       content = <PleaseLogin/>;
     }
 
+    const svgLoaderClass = classNames('svg-loader', { hidden: !loading });
+
     return (
       <div className='home-view'>
         <div>
           {content}
+        </div>
+        <div className='home-loader'>
+          <span className={svgLoaderClass}></span>
         </div>
       </div>
     );

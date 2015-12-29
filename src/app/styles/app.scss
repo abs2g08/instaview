@@ -3,11 +3,25 @@
 @import "~breakpoint-sass/stylesheets/breakpoint";
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 p {
   margin: 0px 10px;
+}
+
+.svg-loader {
+  display: block;
+  width: 150px;
+  height: 100px;
+
+  margin: 50px auto;
+  border-radius: 20px;
+
+  background-color: darken($background, 5);
+  background-image: url('../images/loader.svg');
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @include setFontSize($s-font-size);

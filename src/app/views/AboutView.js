@@ -5,7 +5,7 @@ export default class AboutView extends React.Component {
     return (
       <div className='about-view'>
         <p>
-          This is the about view
+          I’m a front-end Web Developer living in Vancouver, BC. I enjoy foosball, reading and coffee ☕️
         </p>
       </div>
     );

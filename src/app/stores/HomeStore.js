@@ -1,6 +1,7 @@
 import alt from '../alt';
 import { HomeActions } from '../actions';
 import { HomeSource } from '../sources';
+import { loading } from '../utils/loadingUtil';
 
 /*
 
@@ -28,6 +29,8 @@ class HomeStore {
   constructor() {
     this.state = {
       feed: [],
+
+      loading: false,
       errorMsg: ''
     };
 
@@ -36,6 +39,10 @@ class HomeStore {
   }
 
   onGetMyFeed() {
+    loading(this);
+
+    console.log(`loading state: ${this.state.loading}`);
+
     this.getInstance().getMyFeed();
   }
 
@@ -45,12 +52,16 @@ class HomeStore {
       medias: data.medias,
       pagination: data.pagination
     });
+
+    loading(this, false);
   }
 
   onGetMyFeedError(resp) {
     this.setState({
       errorMsg: resp.data
     });
+
+    loading(this, false);
   }
 }
 

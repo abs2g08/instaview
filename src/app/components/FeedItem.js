@@ -119,9 +119,9 @@ export default class FeedItem extends React.Component {
     return (
       <article className='feed-item' key={key}>
         <header className='feed-item-header'>
-          <img className='feed-profimg'
-            src={user.profile_picture}
-            alt=''/>
+            <img className='feed-profimg'
+              src={user.profile_picture}
+              alt='profile picture'/>
           <div className='feed-meta'>
             <a href={user.url} className='feed-username'>
               {user.username}

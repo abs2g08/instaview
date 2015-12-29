@@ -58,7 +58,11 @@ module.exports = {
       {
         test: /\.ico$/,
         loader: 'url-loader',
-        query: { mimetype: "image/x-icon" }
+        query: { mimetype: 'image/x-icon' }
+      },
+      {
+        test: /\.svg$/,
+        loader: 'file-loader'
       },
       {
         test: /\.jsx?$/,
