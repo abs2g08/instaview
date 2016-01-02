@@ -25,7 +25,9 @@ class SearchView extends React.Component {
 
     return (
       <div className='search-view'>
-        <p>This is the home view</p>
+        <p>
+          <h3>WIP (Work In Progess)</h3>
+        </p>
         <span>{this.props.feed}</span>
         <p>
           <input type='text'

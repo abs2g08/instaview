@@ -93,26 +93,27 @@ export default class FeedItem extends React.Component {
 
   render() {
     const key = `feed_item_${this.props.media.id}`;
+    const media = this.props.media;
 
-    let caption = this.props.media.caption;
-    caption = caption ? caption.text :  'this';
+    let caption = media.caption;
+    caption = caption ? caption.text : 'this';
 
-    const comments = this.props.media.comments.data;
+    const comments = media.comments.data;
 
-    let createdTime = this.props.media.created_time;
+    let createdTime = media.created_time;
     createdTime = moment.unix(createdTime).fromNow();
 
-    const user = this.props.media.user;
+    const user = media.user;
     user.url = urls.user(user.username);
 
-    let image = this.props.media.images.standard_resolution;
+    let image = media.images.standard_resolution;
     image = image || { height: 640, url: '', width: 640 };
 
-    let location = this.props.media.location;
+    let location = media.location;
     location = location || { name: 'No location', id: '' };
     location.url = urls.explore(location.id);
 
-    const likesList = this.props.media.likes.data;
+    const likesList = media.likes.data;
 
     const feedLikesClass = classNames('feed-likes', { hidden: likesList.length === 0 });
 

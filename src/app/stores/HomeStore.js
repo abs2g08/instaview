@@ -41,8 +41,6 @@ class HomeStore {
   onGetMyFeed() {
     loading(this);
 
-    console.log(`loading state: ${this.state.loading}`);
-
     this.getInstance().getMyFeed();
   }
 
