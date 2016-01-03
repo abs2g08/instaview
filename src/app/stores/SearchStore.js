@@ -26,6 +26,8 @@ class SearchStore {
     this.setState({
       errorMsg: resp.data.errorMsg
     });
+
+    throw `onSearchUserError error: ${resp.errorMsg}`;
   }
 }
 

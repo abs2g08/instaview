@@ -40,6 +40,8 @@ class LoginStore {
     this.setState({
       errorMsg: resp.data
     });
+
+    throw `onIsLoggedInError error: ${resp.errorMsg}`;
   }
 }
 

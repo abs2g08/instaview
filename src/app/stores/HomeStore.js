@@ -60,6 +60,8 @@ class HomeStore {
     });
 
     loading(this, false);
+
+    throw `onGetMyFeedError error: ${resp.errorMsg}`;
   }
 }
 
