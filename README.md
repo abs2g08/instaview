@@ -12,8 +12,6 @@ Currently it is possible to:
 
 ## Screenshots
 
-// TO-DO
-
 ![Screen Shot 1](http://i.imgur.com/AHw9GuG.png)
 
 ![Screen Shot 2](http://i.imgur.com/2sF9FQq.png)
@@ -32,7 +30,7 @@ Currently it is possible to:
 ## Running
 
 * `npm start`
-* Avaible at: http://localhost:3000.
+* Available at: http://localhost:3000.
 
 ### Running Tests
 
