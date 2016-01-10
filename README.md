@@ -34,11 +34,11 @@ Currently it is possible to:
 * `npm start`
 * Available at: http://localhost:3000.
 
-### Tests
+## Tests
 
 `npm run-script test`
 
-### Building
+## Building
 
 // TO-DO
 
