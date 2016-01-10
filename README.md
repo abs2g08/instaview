@@ -4,6 +4,8 @@ Instaview is an isomporhic React.js based clone of [instagram.com](https://insta
 
 It's a WIP (Work In Progress) so be easy on it :)
 
+Technology Stack: React/Webpack/ES6/alt/Karma
+
 Currently it is possible to:
 
 * Login using OAuth
@@ -32,7 +34,7 @@ Currently it is possible to:
 * `npm start`
 * Available at: http://localhost:3000.
 
-### Running Tests
+### Tests
 
 `npm run-script test`
 
