@@ -34,7 +34,7 @@ Currently it is possible to:
 
 ### Running Tests
 
-// TO-DO
+`npm run-script test`
 
 ### Building
 
