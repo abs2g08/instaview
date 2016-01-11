@@ -30,7 +30,7 @@ Iso.bootstrap((state) => {
       user: state.user
     }
   }));
-})
+});
 
 render(
   <Router history={history}>
