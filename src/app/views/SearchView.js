@@ -25,16 +25,15 @@ class SearchView extends React.Component {
 
     return (
       <div className='search-view'>
-        <p>
-          <h3>WIP (Work In Progess)</h3>
-        </p>
+        <h3>WIP (Work In Progess)</h3>
+        <span>Search for users</span>
         <span>{this.props.feed}</span>
         <p>
           <input type='text'
             name='search'/>
         </p>
         <p>Users:</p>
-        <p>
+        <p className='feed-list'>
           {
             users.map((user, index)=>{
               return (
