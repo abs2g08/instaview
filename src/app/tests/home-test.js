@@ -1,18 +1,21 @@
 import React from 'react';
 import { Router } from 'react-router';
 import Routes from '../Routes';
-import { render } from 'react-dom'
+import { render, unmountComponentAtNode } from 'react-dom';
 import createHistory from 'history/lib/createMemoryHistory';
 import expect from 'expect';
 
 let node;
 
-describe('root', ()=> {
+describe('home', ()=> {
   beforeEach(()=> {
     node = document.createElement('div');
   });
+  afterEach(()=> {
+    unmountComponentAtNode(node)
+  })
 
-  it('renders home route without problems', (done) => {
+  it('renders without problems', (done) => {
     render((
       <Router history={createHistory('/home')}>
         {Routes}
