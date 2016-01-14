@@ -67,6 +67,16 @@ app.get('/handleauth', exports.handleauth);
 app.set('views', './');
 app.set('view engine', 'jade');
 
+const respondOrDie = function(err, resp) {
+  if(!err) {
+    resp();
+  } else {
+    res.status(500).send({
+      errorMsg: err.error_message
+    });
+  }
+}
+
 app.get('/feed/self', function(req, res) {
   console.log(`session: ${req.session.access_token}`);
 
@@ -76,9 +86,11 @@ app.get('/feed/self', function(req, res) {
     });
 
     api.user_self_feed([], function(err, medias, pagination) {
-      res.send({
-        medias,
-        pagination
+      respondOrDie(err, function() {
+        res.send({
+          medias,
+          pagination
+        });
       });
     });
   } else {
@@ -91,8 +103,10 @@ app.get('/feed/self', function(req, res) {
 app.get('/search_user', function(req, res) {
   const q = req.query.q;
   api.user_search(q, [], function(err, users) {
-    res.send({
-      users
+    respondOrDie(err, function() {
+      res.send({
+        users
+      });
     });
   });
 });
