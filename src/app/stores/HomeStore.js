@@ -41,16 +41,27 @@ class HomeStore {
   onGetMyFeed(opts) {
     loading(this);
 
+    this.opts = opts;
+
     this.getInstance().getMyFeed(opts);
   }
 
   onGetMyFeedSuccess(resp) {
     const data = resp.data;
+    let medias;
+
+    if(this.opts && this.opts.next) {
+      medias = this.state.medias.concat(data.medias);
+    } else {
+      medias = data.medias;
+    }
+
     this.setState({
-      medias: data.medias,
+      medias,
       pagination: data.pagination
     });
 
+    this.opts = null;
     loading(this, false);
   }
 
@@ -59,6 +70,7 @@ class HomeStore {
       errorMsg: resp.data
     });
 
+    this.opts = null;
     loading(this, false);
 
     throw `onGetMyFeedError error: ${resp.errorMsg}`;

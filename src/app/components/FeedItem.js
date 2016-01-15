@@ -70,7 +70,7 @@ export default class FeedItem extends React.Component {
                 {username}
               </a>
             </span>
-            <span>
+            <span className='comment-text'>
               {text}
             </span>
           </li>

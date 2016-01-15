@@ -9,12 +9,16 @@ export default class Feed extends React.Component {
     HomeActions.getMyFeed();
   }
 
+  onFeedMore() {
+    HomeActions.getMyFeed({ next: true });
+  }
+
   render() {
-    const medias = this.props.medias;
+    const medias = this.props.medias || [];
     const buttonClass = classNames({ hidden: medias.length === 0 });
 
     return (
-      <section className='feed'>
+      <section className='feed' key='feed-content'>
         <span className='feed-header'>
         </span>
         <div className='feed-content'>
@@ -30,6 +34,11 @@ export default class Feed extends React.Component {
           onClick={this.onFeedRefresh.bind(this)}
           className={buttonClass}>
           refresh
+        </button>
+        <button
+          onClick={this.onFeedMore.bind(this)}
+          className={buttonClass}>
+          more
         </button>
       </section>
     );
