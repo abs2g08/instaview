@@ -38,10 +38,10 @@ class HomeStore {
     this.bindActions(HomeActions);
   }
 
-  onGetMyFeed() {
+  onGetMyFeed(opts) {
     loading(this);
 
-    this.getInstance().getMyFeed();
+    this.getInstance().getMyFeed(opts);
   }
 
   onGetMyFeedSuccess(resp) {

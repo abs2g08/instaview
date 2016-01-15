@@ -1,5 +1,6 @@
 import config from '../../config';
 import express from 'express';
+import request from 'request';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RoutingContext } from 'react-router';
@@ -77,6 +78,14 @@ const respondOrDie = function(err, resp) {
   }
 }
 
+const setPagination = function(session, pagination) {
+  if(pagination.next_url) {
+    session.next_url = pagination.next_url;
+  } else {
+    session.next_url = null;
+  }
+}
+
 app.get('/feed/self', function(req, res) {
   console.log(`session: ${req.session.access_token}`);
 
@@ -85,14 +94,33 @@ app.get('/feed/self', function(req, res) {
       access_token: req.session.access_token
     });
 
-    api.user_self_feed([], function(err, medias, pagination) {
-      respondOrDie(err, function() {
+    if(req.query.next) {
+      if(req.session.next_url) {
+        request.get({url: req.session.next_url, json: true}, function(err, resp, body) {
+          setPagination(req.session, body.pagination);
+
+          respondOrDie(err, function() {
+            res.send({
+              medias: body.data
+            });
+          });
+        });
+      } else {
         res.send({
-          medias,
-          pagination
+          medias: []
+        });
+      }
+    } else {
+      api.user_self_feed([], function(err, medias, pagination) {
+        setPagination(req.session, pagination);
+
+        respondOrDie(err, function() {
+          res.send({
+            medias
+          });
         });
       });
-    });
+    }
   } else {
     res.status(403).send({
       errorMsg: 'Please login first'
@@ -169,9 +197,9 @@ app.get('/*', function(req, res) {
   })
 });
 
-var server = app.listen(devServer.port, function() {
-  var host = server.address().address;
-  var port = server.address().port;
+const server = app.listen(devServer.port, function() {
+  const host = server.address().address;
+  const port = server.address().port;
 
   console.log('Example app listening at http://%s:%s', host, port);
 });
