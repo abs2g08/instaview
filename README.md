@@ -2,7 +2,7 @@
 
 Instaview is an isomporhic React.js based clone of [instagram.com](https://instagram.com). 
 
-It's a WIP (Work In Progress) so be easy on it :)
+It's a Work In Progress (WIP) so be easy on it :)
 
 Technology Stack: React/Webpack/ES6/alt/Karma
 
@@ -10,7 +10,7 @@ Currently it is possible to:
 
 * Login using OAuth
 * View activity feed
-* Search for users WIP
+* Search for users (WIP)
 
 ## Screenshots
 
@@ -21,10 +21,12 @@ Currently it is possible to:
 ## Prerequisites
 
 * [Git](http://git-scm.com/)
-* [Node@4.2.2](http://nodejs.org/)
+* [Node@4.2.0](http://nodejs.org/)
+* [n](https://www.npmjs.com/package/n)
 
 ## Installation
 
+* `n 4.2.0`
 * `git clone git@github.com:abs2g08/instaview.git`
 * `cd instaview`
 * `npm install`

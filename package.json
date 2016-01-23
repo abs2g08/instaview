@@ -13,6 +13,9 @@
     "start": "npm run watch-js & npm run dev-server & npm run server",
     "build": "npm run clean && ./node_modules/.bin/babel src -d lib --experimental"
   },
+  "engines": {
+    "node": "4.2.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abs2g08/instaview.git"
