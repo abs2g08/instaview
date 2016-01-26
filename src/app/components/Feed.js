@@ -30,16 +30,18 @@ export default class Feed extends React.Component {
           })
         }
         </div>
-        <button
-          onClick={this.onFeedRefresh.bind(this)}
-          className={buttonClass}>
-          refresh
-        </button>
-        <button
-          onClick={this.onFeedMore.bind(this)}
-          className={buttonClass}>
-          more
-        </button>
+        <div className='button-rack'>
+          <button
+            onClick={this.onFeedRefresh.bind(this)}
+            className={buttonClass}>
+            refresh
+          </button>
+          <button
+            onClick={this.onFeedMore.bind(this)}
+            className={buttonClass}>
+            more
+          </button>
+        </div>
       </section>
     );
   }
