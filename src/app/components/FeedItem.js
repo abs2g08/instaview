@@ -35,8 +35,8 @@ export default class FeedItem extends React.Component {
           result = <a href={url} className='like' key={key}>{username}, </a>;
         } else {
           result = (
-            <span>
-              and <a href={url} className='like' key={key}> {username}</a> likes
+            <span key={key}>
+              and <a href={url} className='like'> {username}</a> likes
             </span>
           );
         }
@@ -78,7 +78,7 @@ export default class FeedItem extends React.Component {
       });
 
       return (
-        <ul className='comment-list' key={key}>
+        <ul className='comment-list' key={'comment_list'}>
           {list}
         </ul>
       );

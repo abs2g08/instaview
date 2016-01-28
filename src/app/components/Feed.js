@@ -25,7 +25,7 @@ export default class Feed extends React.Component {
         {
           medias.map((media, index) => {
             return (
-              <FeedItem media={media} key={`feed-item-${index}`}/>
+              <FeedItem media={media} key={`feed_item_${index}`}/>
             );
           })
         }
