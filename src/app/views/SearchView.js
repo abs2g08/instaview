@@ -43,14 +43,9 @@ class SearchView extends React.Component {
       <div className='search-view'>
         <div className='search-bar'>
           <h3 className='red'>WIP (Work In Progess)</h3>
-          <span>Search for users</span>
           <span>{this.props.feed}</span>
-          <p>
-            <input type='text' name='search' onChange={this.onChange.bind(this)}/>
-          </p>
-          <p>
-            <button onClick={this.onSearch.bind(this)}>search</button>
-          </p>
+          <input type='text' name='search' onChange={this.onChange.bind(this)}/>
+          <button onClick={this.onSearch.bind(this)}>search</button>
         </div>
         <div className='feed-list'>
           {

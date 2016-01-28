@@ -2,9 +2,9 @@
 
 Instaview is an isomporhic React.js based clone of [instagram.com](https://instagram.com). 
 
-It's a Work In Progress (WIP) so be easy on it :)
-
 Technology Stack: React/Webpack/ES6/alt/Karma
+
+>It's a Work In Progress (WIP) so be easy on it :)
 
 Currently it is possible to:
 

@@ -9,6 +9,7 @@ class SearchStore {
   constructor() {
     this.state = {
       users: [],
+
       loading: false,
       errorMsg: ''
     };
