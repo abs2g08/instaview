@@ -1,12 +1,16 @@
 import alt from '../alt';
 import { SearchActions } from '../actions';
 import { SearchSource } from '../sources';
+
 import { redirect403 } from '../utils/httpUtil';
+import { loading } from '../utils/loadingUtil';
 
 class SearchStore {
   constructor() {
     this.state = {
-      users: []
+      users: [],
+      loading: false,
+      errorMsg: ''
     };
 
     this.registerAsync(SearchSource);
@@ -14,6 +18,7 @@ class SearchStore {
   }
 
   onSearchUser(q) {
+    loading(this);
     this.getInstance().searchUser(q);
   }
 
@@ -21,12 +26,15 @@ class SearchStore {
     this.setState({
       users: resp.data.users
     });
+    loading(this, false);
   }
 
   onSearchUserError(resp) {
     this.setState({
       errorMsg: resp.data.errorMsg
     });
+
+    loading(this, false);
 
     redirect403(resp.status);
 

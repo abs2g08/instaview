@@ -13,6 +13,10 @@ import '../../favicon.ico';
 import '../app/components/menu.scss';
 import '../app/components/feed.scss';
 import '../app/components/please-login.scss';
+import '../app/components/user-item.scss';
+
+// App views
+import '../app/views/search-view.scss';
 
 // Redundant includes to trigger live reload
 import '../app/styles/vendor.scss';
