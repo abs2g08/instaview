@@ -78,7 +78,7 @@ export default class FeedItem extends React.Component {
       });
 
       return (
-        <ul className='comment-list'>
+        <ul className='comment-list' key={key}>
           {list}
         </ul>
       );
