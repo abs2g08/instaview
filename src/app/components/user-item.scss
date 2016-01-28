@@ -1,0 +1,14 @@
+.user-item {
+  .user-fig {
+    display: inline-block;
+    width: 100px;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+  .user-info {
+    display: inline-block;
+    width: 300px;
+  }
+}

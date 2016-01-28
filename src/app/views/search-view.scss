@@ -1,0 +1,18 @@
+@import "variables.scss";
+@import "~breakpoint-sass/stylesheets/breakpoint";
+
+.search-view {
+  .red {
+    color: $red;
+  }
+}
+
+$bp: 0px 768px;
+
+@include breakpoint($bp) {
+  .search-view {
+    .search-bar {
+      margin: 0px 10px;
+    }
+  }
+}
