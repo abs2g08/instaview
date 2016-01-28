@@ -12,21 +12,21 @@ Currently it is possible to:
 * View your activity feed
 * Search for users (WIP)
 
+## Features
+
+* Isomorphic (client/server side) application
+* Full stack coded in ES6 JavaScript syntax
+* Built using webpack (with hot reloading)
+* Linted using eslint & Sublime 2 plugin
+* Frameworks: React.js/alt.js flux architecture 
+* SASS/CSS/SVG loaders. (Compass mixins)
+* Integration tests using Karma.js
+
 ## Screenshots
 
 ![Screen Shot 1](http://i.imgur.com/AHw9GuG.png)
 
 ![Screen Shot 2](http://i.imgur.com/2sF9FQq.png)
-
-## Features
-
-* Isomorphic node application
-* Full stack coded in ES6 JavaScript syntax
-* Built using webpack (with hot reloading)
-* Linted using eslint & Sublime 2 plugin
-* Front-end framework: React.js & alt.js
-* SASS/CSS/SVG loaders. (Compass mixins)
-* Integration tests using Karma.js
 
 ## Prerequisites
 
