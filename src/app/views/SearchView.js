@@ -5,6 +5,14 @@ import connectToStores from 'alt/utils/connectToStores';
 
 class SearchView extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      query: ''
+    }
+  }
+
   static getStores() {
     return [SearchStore, LoginStore];
   }
@@ -17,7 +25,11 @@ class SearchView extends React.Component {
   }
 
   onSearch() {
-    SearchActions.searchUser('abs2g08');
+    SearchActions.searchUser(this.state.query);
+  }
+
+  onChange(e) {
+    this.state.query = e.target.value;
   }
 
   render() {
@@ -29,11 +41,10 @@ class SearchView extends React.Component {
         <span>Search for users</span>
         <span>{this.props.feed}</span>
         <p>
-          <input type='text'
-            name='search'/>
+          <input type='text' name='search' onChange={this.onChange.bind(this)}/>
         </p>
         <p>Users:</p>
-        <p className='feed-list'>
+        <div className='feed-list'>
           {
             users.map((user, index)=>{
               return (
@@ -47,7 +58,7 @@ class SearchView extends React.Component {
               );
             })
           }
-        </p>
+        </div>
         <p>
           <button onClick={this.onSearch.bind(this)}>search</button>
         </p>

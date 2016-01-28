@@ -2,7 +2,7 @@ import alt from '../alt';
 import { HomeActions } from '../actions';
 import { HomeSource } from '../sources';
 import { loading } from '../utils/loadingUtil';
-
+import { redirect403 } from '../utils/httpUtil';
 /*
 
 media = {
@@ -72,6 +72,8 @@ class HomeStore {
 
     this.opts = null;
     loading(this, false);
+
+    redirect403(resp.status);
 
     throw `onGetMyFeedError error: ${resp.errorMsg}`;
   }
