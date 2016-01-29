@@ -16,7 +16,7 @@ Currently it is possible to:
 
 * Isomorphic (client/server side) application
 * Full stack coded in ES6 JavaScript syntax
-* Built using webpack (with hot reloading)
+* Custom webpack build (with hot reloading)
 * Linted using eslint & Sublime 2 plugin
 * Frameworks: React.js/alt.js flux architecture 
 * SASS/CSS/SVG loaders. (Compass mixins)

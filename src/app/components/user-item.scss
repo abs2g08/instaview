@@ -1,7 +1,9 @@
+@import "variables.scss";
+
 .user-item {
   .user-fig {
     display: inline-block;
-    width: 100px;
+    width: 15%;
 
     img {
       border-radius: 50%;
@@ -9,6 +11,9 @@
   }
   .user-info {
     display: inline-block;
-    width: 300px;
   }
+}
+
+.user-item:nth-child(odd) {
+  background: $white;
 }
