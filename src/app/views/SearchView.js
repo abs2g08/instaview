@@ -1,7 +1,7 @@
 import React from 'react';
 import { SearchActions } from '../actions';
 import { LoginStore, SearchStore } from '../stores';
-import { UserItem } from '../components';
+import { UserItem, Wip } from '../components';
 import connectToStores from 'alt/utils/connectToStores';
 import classNames from 'classnames';
 
@@ -42,7 +42,7 @@ class SearchView extends React.Component {
     return (
       <div className='search-view'>
         <div className='search-bar'>
-          <h3 className='red'>WIP (Work In Progess)</h3>
+          <Wip text='This page is a work in progress...'/>
           <span>{this.props.feed}</span>
           <input type='text' name='search' onChange={this.onChange.bind(this)}/>
           <button onClick={this.onSearch.bind(this)}>search</button>
@@ -57,7 +57,7 @@ class SearchView extends React.Component {
           }
         </div>
         <div className='search-loader'>
-          <span className={svgLoaderClass}></span>
+          <i className={svgLoaderClass}></i>
         </div>
       </div>
     );

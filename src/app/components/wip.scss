@@ -1,0 +1,26 @@
+.wip {
+  padding: 10px;
+  background-color: rgba(255,165,0,0.74);
+  border: 1px solid #888;
+  border-radius: 2px;
+  margin: 20px auto;
+  width: 350px;
+
+  .wip-icon {
+    display: inline-block;
+    position: relative;
+    width: 45px;
+    height: 39px;
+    top: 2px;
+    background-image: url('../images/wip.png');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .wip-info {
+    display: inline-block;
+    position: relative;
+    top: -11px;
+    left: 17px;
+  }
+}

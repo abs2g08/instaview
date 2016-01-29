@@ -61,7 +61,7 @@ module.exports = {
         query: { mimetype: 'image/x-icon' }
       },
       {
-        test: /\.svg$/,
+        test: /\.(svg?|png)$/,
         loader: 'file-loader'
       },
       {
