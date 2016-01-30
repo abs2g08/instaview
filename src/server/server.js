@@ -35,6 +35,7 @@ app.set('view engine', 'jade');
 app.get('/feed/self', auth.middleware, insta.feed_self);
 app.get('/search_user', auth.middleware, insta.search_user);
 
+//front-end routing
 app.get('/*', iso.index);
 
 const server = app.listen(devServer.port, ()=> {

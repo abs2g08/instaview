@@ -40,10 +40,6 @@ const index = (req, res)=> {
         },
         content: iso.render()
       });
-    } else {
-      res.status(404).send({
-        errorMsg: 'Not found'
-      });
     }
   })
 };
