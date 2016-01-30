@@ -20,6 +20,11 @@ class SearchStore {
 
   onSearchUser(q) {
     loading(this);
+
+    this.setState({
+      users: []
+    });
+
     this.getInstance().searchUser(q);
   }
 
