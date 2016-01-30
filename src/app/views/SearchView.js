@@ -57,7 +57,7 @@ class SearchView extends React.Component {
           }
         </div>
         <div className='search-loader'>
-          <i className={svgLoaderClass}></i>
+          <svg className={svgLoaderClass}></svg>
         </div>
       </div>
     );

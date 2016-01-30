@@ -44,7 +44,7 @@ class HomeView extends React.Component {
           {content}
         </div>
         <div className='home-loader'>
-          <i className={svgLoaderClass}></i>
+          <svg className={svgLoaderClass}></svg>
         </div>
       </div>
     );
