@@ -35,12 +35,12 @@ app.set('view engine', 'jade');
 app.get('/feed/self', auth.middleware, insta.feed_self);
 app.get('/search_user', auth.middleware, insta.search_user);
 
-//front-end routing
+// front-end routing
 app.get('/*', iso.index);
 
 const server = app.listen(devServer.port, ()=> {
   const host = server.address().address;
   const port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('Instaview app listening at http://%s:%s', host, port);
 });
