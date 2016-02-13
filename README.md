@@ -1,6 +1,6 @@
 # Instaview
 
-Instaview is an isomporhic React.js based clone of [instagram.com](https://instagram.com). 
+Instaview is an isomorphic React.js based clone of [instagram.com](https://instagram.com).
 
 Technology Stack: React/Webpack/ES6/alt/Karma
 
@@ -16,9 +16,9 @@ Currently it is possible to:
 
 * Isomorphic (client/server side) application
 * Full stack coded in ES6 JavaScript syntax
-* Custom webpack build (with hot reloading)
+* Custom Webpack.js build (with hot reloading)
 * Linted using eslint & Sublime 2 plugin
-* Frameworks: React.js/alt.js flux architecture 
+* Frameworks: React.js/alt.js flux architecture
 * SASS/CSS/SVG loaders. (Compass mixins)
 * Integration tests using Karma.js
 
@@ -53,4 +53,3 @@ Currently it is possible to:
 ## Building
 
 // TO-DO
-
