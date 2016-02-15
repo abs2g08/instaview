@@ -46,4 +46,4 @@ const index = (req, res)=> {
 
 export default {
   index
-}
+};

@@ -9,7 +9,7 @@ const initAPI = ()=> {
     client_id: '158b444ca0074028bc72049470c0bc81',
     client_secret: 'a471608714dd4a48b44875d74b4c2f7a'
   });
-}
+};
 
 const feed_self = (req, res)=> {
   if(req.query.next) {
@@ -53,11 +53,11 @@ const search_user = (req, res)=> {
       });
     });
   });
-}
+};
 
 export default {
   api,
   initAPI,
   feed_self,
   search_user
-}
+};

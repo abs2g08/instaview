@@ -6,7 +6,6 @@ import connectToStores from 'alt/utils/connectToStores';
 import classNames from 'classnames';
 
 class HomeView extends React.Component {
-
   static getStores() {
     return [HomeStore, LoginStore];
   }

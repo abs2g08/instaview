@@ -6,7 +6,7 @@ const respondOrDie = function(err, resp) {
       errorMsg: err.error_message
     });
   }
-}
+};
 
 const setPagination = function(session, pagination) {
   if(pagination.next_url) {
@@ -14,7 +14,7 @@ const setPagination = function(session, pagination) {
   } else {
     session.next_url = null;
   }
-}
+};
 
 export {
   respondOrDie,

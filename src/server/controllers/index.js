@@ -6,4 +6,4 @@ export {
   auth,
   insta,
   iso
-}
+};

@@ -4,7 +4,6 @@ import { HomeActions } from '../actions';
 import classNames from 'classnames';
 
 export default class Feed extends React.Component {
-
   onFeedRefresh() {
     HomeActions.getMyFeed();
   }

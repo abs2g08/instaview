@@ -6,7 +6,6 @@ import connectToStores from 'alt/utils/connectToStores';
 import classNames from 'classnames';
 
 class SearchView extends React.Component {
-
   constructor(props) {
     super(props);
 

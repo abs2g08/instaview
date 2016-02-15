@@ -37,14 +37,14 @@ const logged_in = (req, res)=> {
       user: null
     });
   }
-}
+};
 
 const logout = (req, res)=> {
   req.session.access_token = null;
   req.session.user = null;
   initAPI();
   res.redirect('/home');
-}
+};
 
 const middleware = (req, res, next)=> {
   console.log(`session: ${req.session.access_token}`);
@@ -58,7 +58,7 @@ const middleware = (req, res, next)=> {
       errorMsg: 'Please login first'
     });
   }
-}
+};
 
 export default {
   authorize_user,
