@@ -19,4 +19,4 @@ const setPagination = function(session, pagination) {
 export {
   respondOrDie,
   setPagination
-}
+};
