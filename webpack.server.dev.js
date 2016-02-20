@@ -1,4 +1,4 @@
-var config = require('./config');
+var config = require('./src/config');
 var WebpackDevServer = require('webpack-dev-server');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.dev');

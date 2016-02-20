@@ -4,10 +4,17 @@ import routes from '../../app/routes';
 import { renderToString } from 'react-dom/server';
 import { match, RoutingContext } from 'react-router';
 import createMemoryHistory from 'history/lib/createMemoryHistory';
-import config from '../../../config';
+import config from '../../config';
 
-const liveReload = config.liveReload;
 const filename = config.filename;
+
+let network;
+
+if(process.env.NODE_ENV === 'prod') {
+  network = config.dist;
+} else {
+  network = config.liveReload;
+}
 
 const index = (req, res)=> {
   const location = createMemoryHistory().createLocation(req.url);
@@ -35,7 +42,7 @@ const index = (req, res)=> {
 
       res.render('index', {
         args: {
-          liveReload,
+          network,
           filename
         },
         content: iso.render()

@@ -1,4 +1,4 @@
-import config from '../../config';
+import config from '../config';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { auth, insta, iso } from './controllers';
@@ -8,6 +8,8 @@ const app = express();
 const devServer = config.devServer;
 
 app.use(cookieParser());
+
+app.use('/assets', express.static(`${__dirname}/../assets`));
 
 app.use(session({
   secret:'somesecrettokenhere',
@@ -29,7 +31,7 @@ app.get('/logged_in', auth.logged_in);
 app.get('/logout', auth.logout);
 
 // set up Jade
-app.set('views', './');
+app.set('views', `${__dirname}/../`);
 app.set('view engine', 'jade');
 
 app.get('/feed/self', auth.middleware, insta.feed_self);

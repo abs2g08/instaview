@@ -6,13 +6,17 @@
   "scripts": {
     "test": "./node_modules/.bin/karma start karma.config.js",
     "full-test": "npm run clean && npm install && npm run test",
-    "clean": "rm -rf lib && rm -rf node_modules",
+    "clean": "rm -rf lib && rm -rf dist && rm -rf node_modules",
     "watch-js": "./node_modules/.bin/babel src -d lib --experimental -w",
+    "dist-build": "./node_modules/.bin/babel src -d dist --experimental",
+    "dev-build": "./node_modules/.bin/babel src -d lib --experimental",
     "dev-server": "node webpack.server.dev",
     "server": "nodemon lib/server/server",
     "eslint": "eslint -c .eslintrc src --quiet -f",
-    "start": "npm run watch-js & npm run dev-server & npm run server",
-    "build": "npm run clean && ./node_modules/.bin/babel src -d lib --experimental"
+    "dist-webpack": "node ./node_modules/.bin/webpack --config webpack.config.prod",
+    "dist-server": "NODE_ENV=prod node dist/server/server.js",
+    "start": "npm run dev-build; cp src/index.jade lib/; (npm run watch-js & npm run dev-server & npm run server)",    
+    "build": "npm run clean && npm install && npm run dist-build && npm run dist-webpack"
   },
   "engines": {
     "node": "4.2.0"
@@ -31,6 +35,7 @@
     "babel": "5.8.23",
     "babel-eslint": "5.0.0-beta10",
     "babel-loader": "5.3.2",
+    "copy-webpack-plugin": "^1.1.1",
     "css-loader": "0.23.0",
     "escope": "3.3.0",
     "eslint": "1.6.0",

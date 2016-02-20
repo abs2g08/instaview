@@ -1,0 +1,17 @@
+html
+  head
+    title='instaview'
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+    link(rel='Shortcut Icon' type='image/x-icon' href='http://'+args.network.host+':'+args.network.port+'/assets/favicon.ico')
+
+    link(rel='stylesheet', href='http://'+args.network.host+':'+args.network.port+'/assets/'+args.filename.style)
+
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+  body
+    #app!= content
+
+  script(src='http://'+args.network.host+':'+args.network.port+'/assets/'+args.filename.app, defer)

@@ -4,40 +4,31 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var config = require('./src/config');
 
-var liveReload = config.liveReload;
 var filename = config.filename;
 
 module.exports = {
-  devtool: 'inline-source-map',
   entry: [
-    'webpack-dev-server/client?http://'+liveReload.host+':'+liveReload.port,
-    //'webpack/hot/only-dev-server', **doesn't** work with ExtractTextPlugin
-    'webpack/hot/dev-server',
     './src/client/entry'
   ],
   output: {
-    path: __dirname + '/public',
-    filename: filename.app,
-    publicPath: 'http://'+liveReload.host+':'+liveReload.port+'/assets/'
+    path: __dirname + '/dist/assets',
+    filename: filename.app
   },
   plugins: [
-    //new CopyWebpackPlugin **doesn't* work with dev-server
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new CopyWebpackPlugin([{
+      from: path.join(__dirname, 'src/index.jade'),
+      to: path.join(__dirname, '../')
+    }]),
+    //new webpack.optimize.UglifyJsPlugin(), *doesn't* work with ios package
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
     new ExtractTextPlugin(filename.style, { allChunks: true }),
     new webpack.NoErrorsPlugin()
   ],
-  resolve: function(directory) {
+  resolve: function() {
     return {
-      extensions: ['', '.js'],
-      alias: {
-          actions: path.join(directory, 'src/app/actions'),
-          components: path.join(directory, 'src/app/components'),
-          sources: path.join(directory, 'src/app/sources'),
-          stores: path.join(directory, 'src/app/stores'),
-          const: path.join(directory, 'src/app/const'),
-          views: path.join(directory, 'src/app/views'),
-          styles: path.join(directory, 'src/app/styles')
-      }
+      extensions: ['', '.js']
     };
   },
   eslint: {
@@ -68,7 +59,7 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel-loader?experimental'],
+        loaders: ['babel-loader?experimental'],
         exclude: /node_modules/
       },
       {

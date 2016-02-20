@@ -1,7 +1,5 @@
 # Outstanding
 
-Create webpack config for distribution build
-
 Add infinite scrolling to home page
 
 Convert all ems & rems to px

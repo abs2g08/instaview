@@ -3,6 +3,10 @@ module.exports = {
     port: 8080,
     host: 'localhost'
   },
+  dist: {
+    port: 3000,
+    host: 'localhost'
+  },
   devServer: {
     port: 3000,
     host: 'localhost'

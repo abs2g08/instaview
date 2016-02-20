@@ -1,4 +1,4 @@
-import config from '../../../config';
+import config from '../../config';
 import { initAPI, api } from './insta';
 
 const devServer = config.devServer;

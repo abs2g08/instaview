@@ -7,7 +7,7 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import Iso from 'iso';
 
 // Favicon
-import '../../favicon.ico';
+import '../favicon.ico';
 
 // Comp styles
 import '../app/components/menu.scss';
