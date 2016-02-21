@@ -52,4 +52,4 @@ Currently it is possible to:
 
 ## Building
 
-// TO-DO
+`npm run build`

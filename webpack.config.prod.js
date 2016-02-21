@@ -20,7 +20,7 @@ module.exports = {
       from: path.join(__dirname, 'src/index.jade'),
       to: path.join(__dirname, '../')
     }]),
-    //new webpack.optimize.UglifyJsPlugin(), *doesn't* work with ios package
+    new webpack.optimize.UglifyJsPlugin({ mangle: false }), // *doesn't* work with ios package
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new ExtractTextPlugin(filename.style, { allChunks: true }),
