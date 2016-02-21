@@ -7,7 +7,7 @@ import expect from 'expect';
 
 let node;
 
-describe('search', ()=> {
+describe('as a User I should be able to navigate to the search page and view its content', ()=> {
   beforeEach(()=> {
     node = document.createElement('div');
   });
@@ -15,7 +15,7 @@ describe('search', ()=> {
     unmountComponentAtNode(node);
   })
 
-  it('renders without problems', (done) => {
+  it('should render view without problems', (done) => {
     render((
       <Router history={createHistory('/search')}>
         {Routes}

@@ -7,7 +7,7 @@ import expect from 'expect';
 
 let node;
 
-describe('about', ()=> {
+describe('as a User I should be able to navigate to the about page about view its content', ()=> {
   beforeEach(()=> {
     node = document.createElement('div');
   });
@@ -15,7 +15,7 @@ describe('about', ()=> {
     unmountComponentAtNode(node);
   })
 
-  it('renders without problems', (done) => {
+  it('should render the view without problems', (done) => {
     render((
       <Router history={createHistory('/about')}>
         {Routes}

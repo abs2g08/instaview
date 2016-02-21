@@ -7,7 +7,7 @@ import expect from 'expect';
 
 let node;
 
-describe('home', ()=> {
+describe('as a User I should be able to navigate to the home page about view its content', ()=> {
   beforeEach(()=> {
     node = document.createElement('div');
   });
@@ -15,7 +15,7 @@ describe('home', ()=> {
     unmountComponentAtNode(node)
   })
 
-  it('renders without problems', (done) => {
+  it('should render not logged in view without problems', (done) => {
     render((
       <Router history={createHistory('/home')}>
         {Routes}
