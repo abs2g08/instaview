@@ -7,7 +7,7 @@ import expect from 'expect';
 
 let node;
 
-describe('as a User I should be able to navigate to the about page about view its content', ()=> {
+describe('as a User I should be able to navigate to the about page and view its content', ()=> {
   beforeEach(()=> {
     node = document.createElement('div');
   });
