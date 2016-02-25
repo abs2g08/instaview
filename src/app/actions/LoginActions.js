@@ -1,12 +1,9 @@
 import alt from '../alt';
+import { generateAjaxActions } from '../utils/altUtil';
 
 class LoginActions {
   constructor() {
-    this.generateActions(
-      'isLoggedIn',
-      'isLoggedInSuccess',
-      'isLoggedInError'
-    )
+    generateAjaxActions(this, ['isLoggedIn']);
   }
 }
 

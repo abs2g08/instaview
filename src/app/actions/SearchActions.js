@@ -1,12 +1,9 @@
 import alt from '../alt';
+import { generateAjaxActions } from '../utils/altUtil';
 
 class SearchActions {
   constructor() {
-    this.generateActions(
-      'searchUser',
-      'searchUserSuccess',
-      'searchUserError'
-    )
+    generateAjaxActions(this, ['searchUser']);
   }
 }
 

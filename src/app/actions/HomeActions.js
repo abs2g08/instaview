@@ -1,12 +1,9 @@
 import alt from '../alt';
+import { generateAjaxActions } from '../utils/altUtil';
 
 class HomeActions {
   constructor() {
-    this.generateActions(
-      'getMyFeed',
-      'getMyFeedSuccess',
-      'getMyFeedError'
-    )
+    generateAjaxActions(this, ['getMyFeed']);
   }
 }
 
