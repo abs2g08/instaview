@@ -1,6 +1,7 @@
 import React from 'react';
 import FeedItem from './FeedItem';
 import { HomeActions } from '../actions';
+import { genKey } from '../utils/commUtil';
 import classNames from 'classnames';
 
 export default class Feed extends React.Component {
@@ -24,7 +25,7 @@ export default class Feed extends React.Component {
         {
           medias.map((media, index) => {
             return (
-              <FeedItem media={media} key={`feed_item_${index}`}/>
+              <FeedItem media={media} key={genKey('feed_item', index)}/>
             );
           })
         }

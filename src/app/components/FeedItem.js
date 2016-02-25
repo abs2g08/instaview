@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import urls from '../const/urls';
+import { genKey } from '../utils/commUtil';
 import classNames from 'classnames';
 
 /*
@@ -28,7 +29,7 @@ export default class FeedItem extends React.Component {
         const username = like.username;
         const url = urls.user(username);
         const count = likesList.length - 1;
-        const key = `like_${like.id}`;
+        const key = genKey('like', like.id);
 
         let result;
         if (count !== index) {
@@ -45,7 +46,7 @@ export default class FeedItem extends React.Component {
     } else {
       const like = likesList[0];
       const url = urls.user(like.username);
-      const key = `like_${like.id}`;
+      const key = genKey('like', like.id);
 
       return (
         <span>
@@ -60,7 +61,7 @@ export default class FeedItem extends React.Component {
       const list = commentsList.map((comment)=> {
         const text = ` ${comment.text}`;
         const username = comment.from.username;
-        const key = `comment_${comment.id}`;
+        const key = genKey('comment', comment.id);
         const url = urls.user(username);
 
         return (
@@ -92,7 +93,7 @@ export default class FeedItem extends React.Component {
   }
 
   render() {
-    const key = `feed_item_${this.props.media.id}`;
+    const key = genKey('feed_item', this.props.media.id);
     const media = this.props.media;
 
     let caption = media.caption;
@@ -142,7 +143,7 @@ export default class FeedItem extends React.Component {
           <div className={feedLikesClass}>
             {this.renderLikes(likesList)}
             <span className='feed-caption'>
-            {` ${caption}`}
+            {` ${caption}` }
             </span>
           </div>
           {this.renderComments(comments)}
