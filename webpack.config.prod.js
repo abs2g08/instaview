@@ -26,17 +26,15 @@ module.exports = {
     new ExtractTextPlugin(filename.style, { allChunks: true }),
     new webpack.NoErrorsPlugin()
   ],
-  resolve: function() {
-    return {
-      extensions: ['', '.js']
-    };
+  resolve: {
+    extensions: ['', '.js']
   },
   eslint: {
     configFile: '.eslintrc',
     failOnError: true
   },
   sassLoader: {
-    includePaths: [path.resolve(__dirname, 'src/app/styles')]
+    includePaths: [path.join(__dirname, 'src/app/styles')]
   },
   module: {
     preLoaders: [

@@ -11,12 +11,11 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'webpack-dev-server/client?http://'+liveReload.host+':'+liveReload.port,
-    //'webpack/hot/only-dev-server', **doesn't** work with ExtractTextPlugin
     'webpack/hot/dev-server',
     './src/client/entry'
   ],
   output: {
-    path: __dirname + '/public',
+    path: path.join(__dirname, 'public'),
     filename: filename.app,
     publicPath: 'http://'+liveReload.host+':'+liveReload.port+'/assets/'
   },
@@ -26,26 +25,15 @@ module.exports = {
     new ExtractTextPlugin(filename.style, { allChunks: true }),
     new webpack.NoErrorsPlugin()
   ],
-  resolve: function(directory) {
-    return {
-      extensions: ['', '.js'],
-      alias: {
-          actions: path.join(directory, 'src/app/actions'),
-          components: path.join(directory, 'src/app/components'),
-          sources: path.join(directory, 'src/app/sources'),
-          stores: path.join(directory, 'src/app/stores'),
-          const: path.join(directory, 'src/app/const'),
-          views: path.join(directory, 'src/app/views'),
-          styles: path.join(directory, 'src/app/styles')
-      }
-    };
+  resolve: {
+    extensions: ['', '.js'],
   },
   eslint: {
     configFile: '.eslintrc',
     failOnError: true
   },
   sassLoader: {
-    includePaths: [path.resolve(__dirname, 'src/app/styles')]
+    includePaths: [path.join(__dirname, 'src/app/styles')]
   },
   module: {
     preLoaders: [
