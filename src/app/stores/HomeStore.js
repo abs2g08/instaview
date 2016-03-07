@@ -39,6 +39,12 @@ class HomeStore {
     this.bindActions(HomeActions);
   }
 
+  onTest() {
+    this.setState({
+      test: 'hello'
+    });
+  }
+
   onGetMyFeed(opts) {
     loading(this);
 

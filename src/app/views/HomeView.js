@@ -23,6 +23,10 @@ class HomeView extends React.Component {
     }
   }
 
+  test() {
+    HomeActions.test();
+  }
+
   render() {
     const medias = this.props.homeStore.medias || [];
     const myUser = this.props.loginStore.user || {};
@@ -40,6 +44,8 @@ class HomeView extends React.Component {
     return (
       <div className='home-view'>
         <div>
+          <button onClick={this.test.bind(this)}>test</button>
+          {this.props.homeStore.test}
           {content}
         </div>
         <div className='home-loader'>
