@@ -1,0 +1,8 @@
+@include keyframe(fadeIn) {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.fadeIn {
+  @include animation(0s, 0.7s, fadeIn);
+}
