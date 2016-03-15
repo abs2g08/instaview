@@ -50,9 +50,13 @@ class SearchView extends React.Component {
         <div className='feed-list'>
           {
             users.map((user, index)=>{
-              return (
-                <UserItem user={user} key={`user_item${index}`}/>
-              );
+              let userItem;
+              try {
+                userItem = <UserItem user={user} key={`user_item${index}`}/>
+              } catch(e) {
+                userItem = null;
+              }
+              return (userItem);
             })
           }
         </div>
