@@ -16,17 +16,24 @@ export default class Feed extends React.Component {
   render() {
     const medias = this.props.medias || [];
     const buttonClass = classNames({ hidden: medias.length === 0 });
+    const feedContentClass = classNames(
+      'feed-content', { fadeIn: medias.length > 0 }
+    );
 
     return (
       <section className='feed' key='feed-content'>
         <span className='feed-header'>
         </span>
-        <div className='feed-content'>
+        <div className={feedContentClass}>
         {
-          medias.map((media, index) => {
-            return (
-              <FeedItem media={media} key={genKey('feed_item', index)}/>
-            );
+          medias.map((media, index)=> {
+            let item;
+            try {
+              item = <FeedItem media={media} key={genKey('feed_item', index)}/>
+            } catch(e) {
+              item = null;
+            }
+            return item;
           })
         }
         </div>

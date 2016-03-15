@@ -2,6 +2,7 @@ import React from 'react';
 import { LoginStore, HomeStore } from '../stores';
 import { PleaseLogin, Feed } from '../components';
 import { HomeActions } from '../actions';
+import { isomorphicFix } from '../utils/commUtil';
 import connectToStores from 'alt/utils/connectToStores';
 import classNames from 'classnames';
 
@@ -18,22 +19,21 @@ class HomeView extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.loginStore.isLoggedIn) {
-      HomeActions.getMyFeed();
-    }
-  }
-
-  test() {
-    HomeActions.test();
+    isomorphicFix(()=> {
+      if(this.props.loginStore.isLoggedIn) {
+        HomeActions.getMyFeed();
+      }
+    });
   }
 
   render() {
     const medias = this.props.homeStore.medias || [];
     const myUser = this.props.loginStore.user || {};
     const loading = this.props.homeStore.loading || false;
+    const loggedIn = this.props.loginStore.isLoggedIn;
 
     let content;
-    if(this.props.loginStore.isLoggedIn) {
+    if(loggedIn) {
       content = <Feed medias={medias} myUser={myUser}/>
     } else {
       content = <PleaseLogin/>;
