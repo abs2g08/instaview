@@ -1,18 +1,20 @@
 import alt from '../alt';
 import { SearchActions } from '../actions';
 import { SearchSource } from '../sources';
-
+import { seamlessImmutable } from '../utils/altUtil';
+import Immutable from 'seamless-immutable';
 import { redirect403 } from '../utils/httpUtil';
 import { loading } from '../utils/loadingUtil';
 
+@seamlessImmutable
 class SearchStore {
   constructor() {
-    this.state = {
+    this.state = Immutable({
       users: [],
 
       loading: false,
       errorMsg: ''
-    };
+    });
 
     this.registerAsync(SearchSource);
     this.bindActions(SearchActions);
@@ -21,7 +23,7 @@ class SearchStore {
   onSearchUser(q) {
     loading(this);
 
-    this.setState({
+    this.mergeState({
       users: []
     });
 
@@ -29,14 +31,14 @@ class SearchStore {
   }
 
   onSearchUserSuccess(resp) {
-    this.setState({
+    this.mergeState({
       users: resp.data.users
     });
     loading(this, false);
   }
 
   onSearchUserError(resp) {
-    this.setState({
+    this.mergeState({
       errorMsg: resp.data.errorMsg
     });
 

@@ -27,10 +27,13 @@ class HomeView extends React.Component {
   }
 
   render() {
-    const medias = this.props.homeStore.medias || [];
-    const myUser = this.props.loginStore.user || {};
-    const loading = this.props.homeStore.loading || false;
-    const loggedIn = this.props.loginStore.isLoggedIn;
+    const homeStore = this.props.homeStore.asMutable({ deep: true });
+    const loginStore = this.props.loginStore.asMutable({ deep: true });
+
+    const medias = homeStore.medias || [];
+    const myUser = loginStore.user || {};
+    const loading = homeStore.loading || false;
+    const loggedIn = loginStore.isLoggedIn;
 
     let content;
     if(loggedIn) {

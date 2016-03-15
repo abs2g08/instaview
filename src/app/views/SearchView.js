@@ -34,8 +34,9 @@ class SearchView extends React.Component {
   }
 
   render() {
-    const loading = this.props.searchStore.loading || false;
-    const users = this.props.searchStore.users || [];
+    const searchStore = this.props.searchStore.asMutable({ deep: true });
+    const loading = searchStore.loading || false;
+    const users = searchStore.users || [];
     const svgLoaderClass = classNames('svg-loader', { hidden: !loading });
 
     return (

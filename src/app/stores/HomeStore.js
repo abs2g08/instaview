@@ -1,9 +1,11 @@
 import alt from '../alt';
 import { HomeActions } from '../actions';
 import { HomeSource } from '../sources';
-
+import { seamlessImmutable } from '../utils/altUtil';
+import Immutable from 'seamless-immutable';
 import { loading } from '../utils/loadingUtil';
 import { redirect403 } from '../utils/httpUtil';
+
 /*
 
 media = {
@@ -26,23 +28,18 @@ media = {
 
 */
 
+@seamlessImmutable
 class HomeStore {
   constructor() {
-    this.state = {
+    this.state = Immutable({
       feed: [],
 
       loading: false,
       errorMsg: ''
-    };
+    });
 
     this.registerAsync(HomeSource);
     this.bindActions(HomeActions);
-  }
-
-  onTest() {
-    this.setState({
-      test: 'hello'
-    });
   }
 
   onGetMyFeed(opts) {
@@ -63,7 +60,7 @@ class HomeStore {
       medias = data.medias;
     }
 
-    this.setState({
+    this.mergeState({
       medias,
       pagination: data.pagination
     });
@@ -73,7 +70,7 @@ class HomeStore {
   }
 
   onGetMyFeedError(resp) {
-    this.setState({
+    this.mergeState({
       errorMsg: resp.data
     });
 

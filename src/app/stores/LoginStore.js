@@ -1,6 +1,8 @@
 import alt from '../alt';
 import { LoginActions } from '../actions';
 import { LoginSource } from '../sources';
+import { seamlessImmutable } from '../utils/altUtil';
+import Immutable from 'seamless-immutable';
 
 /*
 
@@ -13,12 +15,13 @@ user = {
 
 */
 
+@seamlessImmutable
 class LoginStore {
   constructor() {
-    this.state = {
+    this.state = Immutable({
       isLoggedIn: false,
       user: null
-    };
+    });
 
     this.registerAsync(LoginSource);
     this.bindActions(LoginActions);
@@ -30,14 +33,14 @@ class LoginStore {
 
   onIsLoggedInSuccess(resp) {
     const data = resp.data;
-    this.setState({
+    this.mergeState({
       isLoggedIn: data.status,
       user: data.user
     });
   }
 
   onIsLoggedInError(resp) {
-    this.setState({
+    this.mergeState({
       errorMsg: resp.data
     });
 

@@ -1,5 +1,5 @@
 export function loading(store, state = true) {
-  store.setState({
+  store.mergeState({
     loading: state
   });
 };

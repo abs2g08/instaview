@@ -7,15 +7,15 @@
     "test": "./node_modules/.bin/karma start karma.config.js",
     "full-test": "npm run clean && npm install && npm run test",
     "clean": "rm -rf lib && rm -rf dist && rm -rf node_modules",
-    "watch-js": "./node_modules/.bin/babel src -d lib --experimental -w",
-    "dist-build": "./node_modules/.bin/babel src -d dist --experimental",
-    "dev-build": "./node_modules/.bin/babel src -d lib --experimental",
+    "watch-js": "./node_modules/.bin/babel src -d lib --stage 1 --experimental -w",
+    "dist-build": "./node_modules/.bin/babel src -d dist --stage 1 --experimental",
+    "dev-build": "./node_modules/.bin/babel src -d lib --stage 1 --experimental",
     "dev-server": "node webpack.server.dev",
     "server": "nodemon lib/server/server",
     "eslint": "eslint -c .eslintrc src --quiet -f",
     "dist-webpack": "node ./node_modules/.bin/webpack --config webpack.config.prod",
     "dist-server": "NODE_ENV=prod node dist/server/server.js",
-    "start": "npm run dev-build && cp src/index.jade lib/ && (npm run watch-js & npm run dev-server & npm run server)",    
+    "start": "npm run dev-build && cp src/index.jade lib/ && (npm run watch-js & npm run dev-server & npm run server)",
     "build": "npm run clean && npm install && npm run dist-build && npm run dist-webpack"
   },
   "engines": {
@@ -80,6 +80,7 @@
     "react": "0.14.2",
     "react-dom": "0.14.2",
     "react-router": "1.0.0",
+    "seamless-immutable": "5.1.0",
     "request": "^2.69.0"
   }
 }

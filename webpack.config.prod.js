@@ -57,7 +57,7 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loaders: ['babel-loader?experimental'],
+        loaders: ['babel-loader?experimental&stage=1'],
         exclude: /node_modules/
       },
       {
