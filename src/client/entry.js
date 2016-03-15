@@ -4,6 +4,7 @@ import Routes from '../app/Routes';
 import { Router } from 'react-router';
 import alt from '../app/alt';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
+import Immutable from 'seamless-immutable';
 import Iso from 'iso';
 
 // Favicon
@@ -30,10 +31,10 @@ const history = createBrowserHistory();
 Iso.bootstrap((state) => {
   console.log('bootsrapping data...');
   alt.bootstrap(JSON.stringify({
-    LoginStore: {
+    LoginStore: Immutable({
       isLoggedIn: state.isLoggedIn,
       user: state.user
-    }
+    })
   }));
 });
 
