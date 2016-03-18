@@ -20,7 +20,7 @@ Currently it is possible to:
 * Linted using eslint & Sublime 2 plugin
 * Frameworks: React.js/alt.js flux architecture
 * SASS/CSS/SVG loaders. (Compass mixins)
-* Integration tests using Karma.js
+* Unit tests using Karma.js
 
 ## Screenshots
 
