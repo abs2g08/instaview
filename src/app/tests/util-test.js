@@ -2,6 +2,7 @@ import alt from '../alt';
 import expect from 'expect';
 import { generateAjaxActions, seamlessImmutable } from '../utils/altUtil';
 import { getRandomInt, genKey, isomorphicFix} from '../utils/commUtil';
+import { redirect403 } from '../utils/httpUtil';
 import Immutable from 'seamless-immutable';
 
 describe('alt util tests', ()=> {
@@ -31,7 +32,7 @@ describe('alt util tests', ()=> {
   });
 });
 
-describe('common util tests', ()=> {
+describe('commutil tests', ()=> {
   it('should create a random number between 0 and 10', (done)=> {
     var result = getRandomInt(0, 10);
     expect(result).toExist().toBeGreaterThan(-1).toBeLessThan(11);
@@ -50,5 +51,17 @@ describe('common util tests', ()=> {
     });
     list.push(3);
     done();
+  });
+});
+
+describe('commutil tests', ()=> {
+  it('should redirect window to / if 403 error', ()=> {
+    const win = {
+      location: {
+        href: '/somewhere'
+      }
+    }
+    redirect403(403, win);
+    expect(win.location.href).toEqual('/');
   });
 });

@@ -77,7 +77,7 @@ class HomeStore {
     this.opts = null;
     loading(this, false);
 
-    redirect403(resp.status);
+    redirect403(resp.status, window);
 
     throw `onGetMyFeedError error: ${resp.errorMsg}`;
   }

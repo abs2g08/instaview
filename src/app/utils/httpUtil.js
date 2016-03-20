@@ -1,5 +1,5 @@
-export function redirect403(code) {
+export function redirect403(code, win) {
   if(code === 403) {
-    window.location.href = '/home';
+    win.location.href = '/';
   }
 };
