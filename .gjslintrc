@@ -6,5 +6,5 @@
   "requireTrailingComma": false,
   "esnext": true,
   "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
-  "excludeFiles": ["lib/**", "node_modules/**"]
+  "excludeFiles": ["lib/**", "node_modules/**, "dist/**"]
 }
