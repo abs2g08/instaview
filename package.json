@@ -81,6 +81,6 @@
     "react-dom": "0.14.2",
     "react-router": "1.0.0",
     "seamless-immutable": "5.1.0",
-    "request": "^2.69.0"
+    "request": "2.69.0"
   }
 }
