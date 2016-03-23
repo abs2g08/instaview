@@ -2,7 +2,7 @@
 
 Instaview is an isomorphic React.js based clone of [instagram.com](https://instagram.com).
 
-Technology Stack: React/Webpack/ES6/alt/Karma
+Technology Stack: React/Webpack/ES6/alt/Karma/Mocha
 
 >It's a Work In Progress (WIP), so be easy on it :)
 
@@ -40,6 +40,9 @@ Currently it is possible to:
 * `git clone git@github.com:abs2g08/instaview.git`
 * `cd instaview`
 * `npm install`
+
+NOTE: Two warnings will appear when running npm install.
+These are due to stale dependencies within external 3rd party modules.
 
 ## Running
 
