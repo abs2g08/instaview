@@ -11,6 +11,8 @@ const initAPI = ()=> {
   });
 };
 
+/* TO-DO: refactor the following code in a more functional stlye */
+
 const feed_self = (req, res)=> {
   if(req.query.next) {
     if(req.session.next_url) {
@@ -46,6 +48,8 @@ const feed_self = (req, res)=> {
 
 const search_user = (req, res)=> {
   const q = req.query.q;
+
+  /* TO-DO: sanatise and check inputs, add useful errors */
   api.user_search(q, [], (err, users)=> {
     respondOrDie(err, ()=> {
       res.send({

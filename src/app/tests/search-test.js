@@ -15,7 +15,7 @@ describe('as a User I should be able to navigate to the search page and view its
     unmountComponentAtNode(node);
   })
 
-  it('should render view without problems', (done) => {
+  it('should render view without problems', (done)=> {
     render((
       <Router history={createHistory('/search')}>
         {Routes}

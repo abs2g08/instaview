@@ -23,6 +23,10 @@ class SearchStore {
   onSearchUser(q) {
     loading(this);
 
+    if(!q) {
+      throw 'onSearchUser requires query string';
+    }
+
     this.mergeState({
       users: []
     });
@@ -46,6 +50,7 @@ class SearchStore {
 
     redirect403(resp.status);
 
+    //TO-DO: display error message on screen
     throw `onSearchUserError error: ${resp.errorMsg}`;
   }
 }

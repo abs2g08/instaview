@@ -33,6 +33,7 @@ class LoginStore {
 
   onIsLoggedInSuccess(resp) {
     const data = resp.data;
+    
     this.mergeState({
       isLoggedIn: data.status,
       user: data.user
@@ -44,6 +45,7 @@ class LoginStore {
       errorMsg: resp.data
     });
 
+    //TO-DO: display error message on screen
     throw `onIsLoggedInError error: ${resp.errorMsg}`;
   }
 }

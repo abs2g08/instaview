@@ -43,7 +43,7 @@ describe('commutil tests', ()=> {
     expect(key).toMatch(/test_0_[0-9]{1,4}/);
     done();
   });
-  it('should create a list 1,3,2 ', (done)=> {
+  it('should create a list 1,3,2', (done)=> {
     var list = [1];
     isomorphicFix(function() {
       list.push(2);

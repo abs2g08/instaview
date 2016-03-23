@@ -22,7 +22,7 @@ const handleauth = (req, res)=> {
 
       req.session.access_token = result.access_token;
       req.session.user = result.user;
-      res.redirect('/home');
+      res.redirect('/');
     }
   });
 };
@@ -43,7 +43,7 @@ const logout = (req, res)=> {
   req.session.access_token = null;
   req.session.user = null;
   initAPI();
-  res.redirect('/home');
+  res.redirect('/');
 };
 
 const middleware = (req, res, next)=> {

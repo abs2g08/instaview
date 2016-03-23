@@ -7,6 +7,11 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import Immutable from 'seamless-immutable';
 import Iso from 'iso';
 
+/*
+  NOTE: Must load all styles on client side due to the fact
+        server side does not render css.
+*/
+
 // Favicon
 import '../favicon.ico';
 

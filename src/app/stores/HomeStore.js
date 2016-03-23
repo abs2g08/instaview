@@ -79,6 +79,7 @@ class HomeStore {
 
     redirect403(resp.status, window);
 
+    //TO-DO: display error message on screen
     throw `onGetMyFeedError error: ${resp.errorMsg}`;
   }
 }

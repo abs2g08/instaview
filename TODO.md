@@ -4,6 +4,6 @@ Add infinite scrolling to home page
 
 Convert all ems & rems to px
 
-Add more try catch statements
+Add integration and unit tests for backend.
 
-Hook up test rig
+Add integration testing for front-end.

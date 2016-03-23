@@ -15,17 +15,24 @@ describe('as a User I should be able to navigate to the home page and view its c
     unmountComponentAtNode(node)
   })
 
-  it('should render not logged in view without problems', (done) => {
+  it('should render not logged in view without problems', (done)=> {
     render((
-      <Router history={createHistory('/home')}>
+      <Router history={createHistory('/')}>
         {Routes}
       </Router>
     ), node, ()=> {
-      const text = node.getElementsByClassName('please-login')[0].getElementsByTagName('p')[0].textContent;
+      const text = node
+                    .getElementsByClassName('please-login')[0]
+                    .getElementsByTagName('p')[0]
+                    .textContent;
+
       expect(text).toEqual('You need to be logged in to view your feed');
-      done()
+      done();
     })
   });
-});
 
-//TO-DO: add more tests for React components
+  it('should show home feed when user selects login button', (done)=> {
+    /* TO-DO: work out how to do this */
+    done();
+  });
+});

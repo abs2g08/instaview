@@ -22,13 +22,15 @@ import classNames from 'classnames';
   users_in_photo: Array[0]
 */
 
+/* TO-DO: split comments and likes from FeedItem into multiple components */
+
 export default class FeedItem extends React.Component {
   renderLikes(likesList) {
     if (likesList.length > 1) {
       return likesList.map((like, index)=> {
         const username = like.username;
         const url = urls.user(username);
-        const count = likesList.length - 1;
+        const count = (likesList.length - 1);
         const key = genKey('like', like.id);
 
         let result;
@@ -92,30 +94,45 @@ export default class FeedItem extends React.Component {
     }
   }
 
+  getCaption(caption) {
+    return (caption ? caption.text : 'this');
+  }
+
+  getTimeFromNow(createdTime) {
+    const time = moment.unix(createdTime);
+    let result = '';
+    if(time._d.toString() !== 'Invalid Date') {
+      result = time.fromNow();
+    }
+    return result;
+  }
+
+  getImage(image) {
+    return (image || { height: 640, url: '', width: 640 });
+  }
+
+  getLocation(location) {
+    return (location || { name: 'No location', id: '' });
+  }
+
   render() {
     const key = genKey('feed_item', this.props.media.id);
     const media = this.props.media;
 
-    let caption = media.caption;
-    caption = caption ? caption.text : 'this';
-
+    const caption = this.getCaption(media.caption);
     const comments = media.comments.data;
 
-    let createdTime = media.created_time;
-    createdTime = moment.unix(createdTime).fromNow();
+    const createdTime = this.getTimeFromNow(media.created_time);
 
     const user = media.user;
     user.url = urls.user(user.username);
 
-    let image = media.images.standard_resolution;
-    image = image || { height: 640, url: '', width: 640 };
+    const image = this.getImage(media.images.standard_resolution);
 
-    let location = media.location;
-    location = location || { name: 'No location', id: '' };
+    const location = this.getLocation(media.location);
     location.url = urls.explore(location.id);
 
     const likesList = media.likes.data;
-
     const feedLikesClass = classNames('feed-likes', { hidden: likesList.length === 0 });
 
     return (
