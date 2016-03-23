@@ -22,7 +22,7 @@ import classNames from 'classnames';
   users_in_photo: Array[0]
 */
 
-/* TO-DO: split comments and likes from FeedItem into multiple components */
+/* TO-DO: Split 'comments' and 'likes' from FeedItem into multiple components */
 
 export default class FeedItem extends React.Component {
   renderLikes(likesList) {
@@ -94,6 +94,8 @@ export default class FeedItem extends React.Component {
     }
   }
 
+  //TO-DO: Expose following methods for testing
+
   getCaption(caption) {
     return (caption ? caption.text : 'this');
   }
@@ -124,11 +126,13 @@ export default class FeedItem extends React.Component {
 
     const createdTime = this.getTimeFromNow(media.created_time);
 
+    //TO-DO: Add linting rule to ensure let does not throw a warning
     const user = media.user;
     user.url = urls.user(user.username);
 
     const image = this.getImage(media.images.standard_resolution);
 
+    //TO-DO: Add linting rule to ensure let does not throw a warning
     const location = this.getLocation(media.location);
     location.url = urls.explore(location.id);
 

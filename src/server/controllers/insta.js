@@ -11,7 +11,9 @@ const initAPI = ()=> {
   });
 };
 
-/* TO-DO: refactor the following code in a more functional stlye */
+/* TO-DO: Refactor the following code in a more functional style.
+          Rework error handling WIP at the moment.
+*/
 
 const feed_self = (req, res)=> {
   if(req.query.next) {
@@ -49,7 +51,7 @@ const feed_self = (req, res)=> {
 const search_user = (req, res)=> {
   const q = req.query.q;
 
-  /* TO-DO: sanatise and check inputs, add useful errors */
+  /* TO-DO: Sanatise and check inputs, add useful errors */
   api.user_search(q, [], (err, users)=> {
     respondOrDie(err, ()=> {
       res.send({

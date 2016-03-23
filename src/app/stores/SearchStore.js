@@ -48,9 +48,11 @@ class SearchStore {
 
     loading(this, false);
 
-    redirect403(resp.status);
-
-    //TO-DO: display error message on screen
+    if(resp.status) {
+      redirect403(resp.status, window);
+    }
+    
+    //TO-DO: Display error message on screen
     throw `onSearchUserError error: ${resp.errorMsg}`;
   }
 }
