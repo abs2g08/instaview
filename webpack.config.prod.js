@@ -6,6 +6,8 @@ var config = require('./src/config');
 
 var filename = config.filename;
 
+/* front-end webpack.config */
+
 module.exports = {
   entry: [
     './src/client/entry'

@@ -5,6 +5,8 @@ var webpackConfig = require('./webpack.config.dev');
 
 var liveReload = config.liveReload;
 
+/* front-end webpack.config for live-reload */
+
 var server = new WebpackDevServer(webpack(webpackConfig), {
   // webpack-dev-server options
   publicPath: webpackConfig.output.publicPath,

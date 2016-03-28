@@ -7,6 +7,8 @@ var config = require('./src/config');
 var liveReload = config.liveReload;
 var filename = config.filename;
 
+/* front-end webpack.config */
+
 module.exports = {
   devtool: 'inline-source-map',
   entry: [

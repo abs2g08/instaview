@@ -51,6 +51,8 @@ These are due to stale dependencies within external 3rd party modules.
 
 ## Tests
 
+NOTE: Assumes already run `npm start`
+
 * `npm install`
 * `npm run test`
 

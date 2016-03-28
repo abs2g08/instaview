@@ -22,7 +22,7 @@ describe('alt util tests', ()=> {
     @seamlessImmutable
     class FooStore {
       constructor() {
-        this.state = Immutable({ a: 2});
+        this.state = Immutable({ a: 2 });
       }
     }
     const fooStore = alt.createStore(FooStore);
