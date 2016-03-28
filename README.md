@@ -51,7 +51,8 @@ These are due to stale dependencies within external 3rd party modules.
 
 ## Tests
 
-`npm run-script test`
+* `npm install`
+* `npm run test`
 
 ## Building
 

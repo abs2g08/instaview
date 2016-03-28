@@ -26,7 +26,7 @@ describe('as a User I should be able to navigate to the home page and view its c
                     .getElementsByTagName('p')[0]
                     .textContent;
 
-      expect(text).toEqual('You need to be logged in to view your feed');
+      expect(text).toEqual('You need to be logged in to view this page');
       done();
     })
   });

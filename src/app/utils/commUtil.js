@@ -14,7 +14,7 @@ export function genKey(className, id=0) {
 }
 
 /*
-   WARNING: Horrible emporary hack!!!
+   WARNING: Horrible temporary hack!!!
    fixes weird bug when rending react server side
    where store doesn't update view when action is fired in
    componentDidMount method.
