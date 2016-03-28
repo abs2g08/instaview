@@ -3,6 +3,7 @@ import { Router } from 'react-router';
 import Routes from '../Routes';
 import { render, unmountComponentAtNode } from 'react-dom';
 import createHistory from 'history/lib/createMemoryHistory';
+import $ from 'jquery';
 import expect from 'expect';
 
 let node;
@@ -21,11 +22,7 @@ describe('as a User I should be able to navigate to the home page and view its c
         {Routes}
       </Router>
     ), node, ()=> {
-      const text = node
-                    .getElementsByClassName('please-login')[0]
-                    .getElementsByTagName('p')[0]
-                    .textContent;
-
+      const text = $(node).find('p')[0].innerHTML;
       expect(text).toEqual('You need to be logged in to view this page');
       done();
     })

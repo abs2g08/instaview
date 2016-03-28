@@ -3,6 +3,7 @@ import { Router } from 'react-router';
 import Routes from '../Routes';
 import { render, unmountComponentAtNode } from 'react-dom';
 import createHistory from 'history/lib/createMemoryHistory';
+import $ from 'jquery';
 import expect from 'expect';
 
 let node;
@@ -21,7 +22,7 @@ describe('as a User I should be able to navigate to the search page and view its
         {Routes}
       </Router>
     ), node, ()=> {
-      const text = node.getElementsByTagName('span')[0];
+      const text = $(node).find('span')[0];
 
       //TO-DO: figure out a test
       expect(text).toEqual(text);

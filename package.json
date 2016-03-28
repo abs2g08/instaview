@@ -81,6 +81,7 @@
     "expect": "1.13.4",
     "extract-text-webpack-plugin": "0.9.1",
     "file-loader": "0.8.5",
+    "jquery": "2.2.2",
     "karma": "0.13.19",
     "karma-chrome-launcher": "0.2.2",
     "karma-cli": "0.1.2",

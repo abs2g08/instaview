@@ -46,8 +46,7 @@ class App extends React.Component {
 
     return (
       <div className={containerClass}>
-        <div className='pusher'
-          onClick={this.closeDraw.bind(this)}>
+        <div className='pusher' onClick={this.closeDraw.bind(this)}>
           <Menu onClick={this.onToggle.bind(this)} loginStore={loginStore}/>
           <main className='container content'>
             {this.props.children}
