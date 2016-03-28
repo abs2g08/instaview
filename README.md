@@ -15,12 +15,12 @@ Currently it is possible to:
 ## Features
 
 * Isomorphic (client/server side) application
-* Full stack coded in ES6 JavaScript syntax
+* Full stack coded in ES6/ES7
 * Custom Webpack.js build (with hot reloading)
-* Linted using eslint & Sublime 2 plugin
+* Linted using eslint
 * Frameworks: React.js/alt.js flux architecture
 * SASS/CSS/SVG loaders. (Compass mixins)
-* Unit tests using Karma.js
+* FE Unit tests using Karma.js
 
 ## Screenshots
 
