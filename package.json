@@ -33,7 +33,7 @@
     "react-router",
     "hot-loader",
     "server",
-    "es7",
+    "es7"
   ],
   "keywords": [
     "react",
@@ -51,7 +51,7 @@
     "hot-loader",
     "async",
     "server",
-    "es7",
+    "es7"
   ],
   "engines": {
     "node": "4.2.0"
