@@ -1,8 +1,8 @@
 # Instaview
 
-Instaview is an isomorphic React.js based clone of [instagram.com](https://instagram.com).
+Instaview is an <s>Isomorphic</s> [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) React.js based clone of [instagram.com](https://instagram.com).
 
-Technology Stack: React/Webpack/ES6/alt/Karma/Mocha
+Technology Stack: React/Webpack/ES6/ES7/alt/Karma/Mocha
 
 >It's a Work In Progress (WIP), so be easy on it :)
 
