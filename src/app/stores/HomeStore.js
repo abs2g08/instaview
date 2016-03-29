@@ -32,7 +32,7 @@ media = {
 class HomeStore {
   constructor() {
     this.state = Immutable({
-      feed: [],
+      medias: [],
 
       loading: false,
       errorMsg: ''

@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
     browsers: [ 'Chrome' ],
     singleRun: false,
-    frameworks: [ 'mocha' ],
+    frameworks: [ 'mocha', 'sinon' ],
     files: [
       'webpack.tests.js'
     ],
@@ -23,6 +23,7 @@ module.exports = function(config) {
     plugins: [
       require('karma-webpack'),
       require('karma-mocha'),
+      require('karma-sinon'),
       require('karma-chrome-launcher')
     ]
   });
