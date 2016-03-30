@@ -5,6 +5,7 @@ import { seamlessImmutable } from '../utils/altUtil';
 import Immutable from 'seamless-immutable';
 import { redirect403 } from '../utils/httpUtil';
 import { loading } from '../utils/loadingUtil';
+import { throwHTTPError } from '../utils/httpUtil';
 
 @seamlessImmutable
 class SearchStore {
@@ -42,18 +43,16 @@ class SearchStore {
   }
 
   onSearchUserError(resp) {
-    this.mergeState({
-      errorMsg: resp.data.errorMsg
-    });
+    const errorMsg = resp.data.errorMsg || resp.data;
+    this.mergeState({ errorMsg });
 
     loading(this, false);
 
     if(resp.status) {
       redirect403(resp.status, window);
     }
-    
-    //TO-DO: Display error message on screen
-    throw `onSearchUserError error: ${resp.errorMsg}`;
+
+    throwHTTPError('onSearchUserError', errorMsg);
   }
 }
 

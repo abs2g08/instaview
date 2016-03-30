@@ -3,6 +3,7 @@ import { LoginActions } from '../actions';
 import { LoginSource } from '../sources';
 import { seamlessImmutable } from '../utils/altUtil';
 import Immutable from 'seamless-immutable';
+import { throwHTTPError } from '../utils/httpUtil';
 
 /*
 
@@ -41,12 +42,10 @@ class LoginStore {
   }
 
   onIsLoggedInError(resp) {
-    this.mergeState({
-      errorMsg: resp.data
-    });
+    const errorMsg = resp.data.errorMsg || resp.data;
+    this.mergeState({ errorMsg });
 
-    //TO-DO: Display error message on screen
-    throw `onIsLoggedInError error: ${resp.errorMsg}`;
+    throwHTTPError('onIsLoggedInError', errorMsg);
   }
 }
 

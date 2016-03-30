@@ -9,3 +9,9 @@ export function redirect403(code, win) {
     win.location.href = '/';
   }
 };
+
+export function throwHTTPError(funcName, errorMsg) {
+  try {
+    throw `${funcName} error: ${errorMsg}`;
+  } catch (e) {}
+}

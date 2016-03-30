@@ -5,6 +5,7 @@ import { seamlessImmutable } from '../utils/altUtil';
 import Immutable from 'seamless-immutable';
 import { loading } from '../utils/loadingUtil';
 import { redirect403 } from '../utils/httpUtil';
+import { throwHTTPError } from '../utils/httpUtil';
 
 /*
 
@@ -80,9 +81,7 @@ class HomeStore {
       redirect403(resp.status, window);
     }
 
-    try {
-      throw `onGetMyFeedError error: ${errorMsg}`;
-    } catch (e) {}
+    throwHTTPError('onGetMyFeedError', errorMsg);
   }
 }
 
