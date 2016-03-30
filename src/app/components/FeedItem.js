@@ -3,6 +3,8 @@ import moment from 'moment';
 import urls from '../const/urls';
 import { genKey } from '../utils/commUtil';
 import classNames from 'classnames';
+import Comments from './Comments';
+import Likes from './Likes';
 
 /*
   attribution: null
@@ -22,80 +24,7 @@ import classNames from 'classnames';
   users_in_photo: Array[0]
 */
 
-/* TO-DO: Split 'comments' and 'likes' from FeedItem into multiple components */
-
 export default class FeedItem extends React.Component {
-  renderLikes(likesList) {
-    if (likesList.length > 1) {
-      return likesList.map((like, index)=> {
-        const username = like.username;
-        const url = urls.user(username);
-        const count = (likesList.length - 1);
-        const key = genKey('like', like.id);
-
-        let result;
-        if (count !== index) {
-          result = <a href={url} className='like' key={key}>{username}, </a>;
-        } else {
-          result = (
-            <span key={key}>
-              and <a href={url} className='like'> {username}</a> likes
-            </span>
-          );
-        }
-        return result;
-      });
-    } else {
-      const like = likesList[0];
-      const url = urls.user(like.username);
-      const key = genKey('like', like.id);
-
-      return (
-        <span>
-          <a href={url} className='like' key={key}>{like.username}</a> likes
-        </span>
-      );
-    }
-  }
-
-  renderComments(commentsList) {
-    if (commentsList.length > 0) {
-      const list = commentsList.map((comment)=> {
-        const text = ` ${comment.text}`;
-        const username = comment.from.username;
-        const key = genKey('comment', comment.id);
-        const url = urls.user(username);
-
-        return (
-          <li className='comment-item' key={key}>
-            <span>
-              <a href={url} className='comment-username'>
-                {username}
-              </a>
-            </span>
-            <span className='comment-text'>
-              {text}
-            </span>
-          </li>
-        );
-      });
-
-      return (
-        <ul className='comment-list' key={'comment_list'}>
-          {list}
-        </ul>
-      );
-    } else {
-      return (
-        <div className='hidden'>
-          No comments
-        </div>
-      );
-    }
-  }
-
-  //TO-DO: Expose following methods for testing
-
   getCaption(caption) {
     return (caption ? caption.text : 'this');
   }
@@ -136,8 +65,8 @@ export default class FeedItem extends React.Component {
     const location = this.getLocation(media.location);
     location.url = urls.explore(location.id);
 
-    const likesList = media.likes.data;
-    const feedLikesClass = classNames('feed-likes', { hidden: likesList.length === 0 });
+    const likes = media.likes.data;
+    const feedLikesClass = classNames('feed-likes', { hidden: likes.length === 0 });
 
     return (
       <article className='feed-item' key={key}>
@@ -162,12 +91,12 @@ export default class FeedItem extends React.Component {
         </span>
         <footer className='feed-item-footer'>
           <div className={feedLikesClass}>
-            {this.renderLikes(likesList)}
+            <Likes likes={likes}/>
             <span className='feed-caption'>
             {` ${caption}` }
             </span>
           </div>
-          {this.renderComments(comments)}
+          <Comments comments={comments}/>
         </footer>
       </article>
     );
