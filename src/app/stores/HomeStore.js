@@ -70,9 +70,8 @@ class HomeStore {
   }
 
   onGetMyFeedError(resp) {
-    this.mergeState({
-      errorMsg: resp.data
-    });
+    const errorMsg = resp.data.errorMsg || resp.data;
+    this.mergeState({ errorMsg });
 
     this.opts = null;
     loading(this, false);
@@ -81,8 +80,9 @@ class HomeStore {
       redirect403(resp.status, window);
     }
 
-    //TO-DO: Display error message on screen
-    throw `onGetMyFeedError error: ${resp.errorMsg}`;
+    try {
+      throw `onGetMyFeedError error: ${errorMsg}`;
+    } catch (e) {}
   }
 }
 

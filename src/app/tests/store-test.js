@@ -1,4 +1,3 @@
-//import alt from '../alt';
 import sinon from 'sinon';
 import { HomeStore } from '../stores';
 import expect from 'expect';
@@ -25,6 +24,17 @@ describe('HomeStore tests', ()=> {
 
     HomeStore.listen(function() {
       expect(HomeStore.getState().medias).toEqual([1,2,3]);
+      done();
+    });
+  });
+  it('should store error message from failed ajax call', (done)=> {
+    HomeActions.getMyFeed();
+
+    setTimeout(() => server.respond([500, {
+      'Content-Type': 'application/json' }, JSON.stringify({ errorMsg: 'error happened' })]), 0);
+
+    HomeStore.listen(function() {
+      expect(HomeStore.getState().errorMsg).toEqual('error happened');
       done();
     });
   });
