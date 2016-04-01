@@ -1,6 +1,6 @@
 import React from 'react';
-import urls from '../const/urls';
-import { genKey } from '../utils/commUtil';
+import urls from '../../const/urls';
+import { genKey } from '../../utils/commUtil';
 
 export default class Likes extends React.Component {
   renderList(likes) {

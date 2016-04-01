@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use('/assets', express.static(`${__dirname}/../assets`));
 
 app.use(session({
-  secret:'somesecrettokenhere',
+  secret:'somesecrettokenhere', //TO-DO
   resave: true,
   saveUninitialized: true
 }));

@@ -1,7 +1,7 @@
 import React from 'react';
 import FeedItem from './FeedItem';
-import { HomeActions } from '../actions';
-import { genKey } from '../utils/commUtil';
+import { HomeActions } from '../../actions';
+import { genKey } from '../../utils/commUtil';
 import classNames from 'classnames';
 
 export default class Feed extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import urls from '../const/urls';
-import { genKey } from '../utils/commUtil';
+import urls from '../../const/urls';
+import { genKey } from '../../utils/commUtil';
 import classNames from 'classnames';
 import Comments from './Comments';
 import Likes from './Likes';

@@ -16,11 +16,11 @@ import Iso from 'iso';
 import '../favicon.ico';
 
 // Comp styles
-import '../app/components/menu.scss';
-import '../app/components/feed.scss';
-import '../app/components/please-login.scss';
-import '../app/components/user-item.scss';
-import '../app/components/wip.scss';
+import '../app/components/menu/menu.scss';
+import '../app/components/home/feed.scss';
+import '../app/components/common/please-login.scss';
+import '../app/components/common/wip.scss';
+import '../app/components/search/user-item.scss';
 
 // App views
 import '../app/views/search-view.scss';
