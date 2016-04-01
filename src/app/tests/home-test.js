@@ -81,7 +81,7 @@ describe('Feed tests', ()=> {
     unmountComponentAtNode(node)
   });
 
-  it('should render feed with 19 items with likes', (done)=> {
+  it('should render feed with 19 items with likes and comments', (done)=> {
     render((
       <Feed medias={medias} myUser={myUser}></Feed>
     ), node, ()=> {
@@ -91,6 +91,13 @@ describe('Feed tests', ()=> {
 
       const likes = $(firstItem).find('.feed-likes')[0].innerText;
       expect(likes).toEqual('rosiejev, calimusprime, and  elsdeville likes this');
+
+      const comment = $(firstItem).find('.comment-item')[0].innerText;
+      expect(comment).toEqual('emrearslaner Looking good dude!');
+
+      const location = $(firstItem).find('.feed-location')[0].innerText;
+      expect(location).toEqual('Cusco, Peru');
+
       done();
     });
   });
