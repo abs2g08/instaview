@@ -58,6 +58,10 @@ module.exports = {
         loader: 'file-loader'
       },
       {
+        test: /\.json$/,
+        loader: 'json'
+      },      
+      {
         test: /\.jsx?$/,
         loaders: ['babel-loader?experimental&stage=1'],
         exclude: /node_modules/

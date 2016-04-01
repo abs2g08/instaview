@@ -4,10 +4,13 @@ import Routes from '../Routes';
 import sinon from 'sinon';
 import { HomeStore } from '../stores';
 import { HomeActions } from '../actions';
+import { Feed } from '../components';
 import { render, unmountComponentAtNode } from 'react-dom';
 import createHistory from 'history/lib/createMemoryHistory';
 import $ from 'jquery';
 import expect from 'expect';
+import medias from './json/medias.json';
+import myUser from './json/myUser.json';
 
 let node;
 
@@ -17,7 +20,7 @@ describe('as a User I should be able to navigate to the home page and view its c
   });
   afterEach(()=> {
     unmountComponentAtNode(node)
-  })
+  });
 
   it('should render not logged in view without problems', (done)=> {
     render((
@@ -29,11 +32,6 @@ describe('as a User I should be able to navigate to the home page and view its c
       expect(text).toEqual('You need to be logged in to view this page');
       done();
     })
-  });
-
-  it('should show home feed when user selects login button', (done)=> {
-    /* TO-DO: work out how to do this */
-    done();
   });
 });
 
@@ -70,6 +68,29 @@ describe('HomeStore tests', ()=> {
 
     HomeStore.listen(function() {
       expect(HomeStore.getState().errorMsg).toEqual('bar');
+      done();
+    });
+  });
+});
+
+describe('Feed tests', ()=> {
+  beforeEach(()=> {
+    node = document.createElement('div');
+  });
+  afterEach(()=> {
+    unmountComponentAtNode(node)
+  });
+
+  it('should render feed with 19 items with likes', (done)=> {
+    render((
+      <Feed medias={medias} myUser={myUser}></Feed>
+    ), node, ()=> {
+      const items = $(node).find('.feed-item');
+      const firstItem = items[0];
+      expect(items.length).toEqual(19);
+
+      const likes = $(firstItem).find('.feed-likes')[0].innerText;
+      expect(likes).toEqual('rosiejev, calimusprime, and  elsdeville likes this');
       done();
     });
   });
