@@ -31,10 +31,7 @@ export default class FeedItem extends React.Component {
 
   getTimeFromNow(createdTime) {
     const time = moment.unix(createdTime);
-    let result = '';
-    if(time._d.toString() !== 'Invalid Date') {
-      result = time.fromNow();
-    }
+    const result = time.isValid() ? time.fromNow() : '';
     return result;
   }
 
