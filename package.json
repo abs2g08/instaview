@@ -15,7 +15,7 @@
     "eslint": "eslint -c .eslintrc src --quiet -f",
     "dist-webpack": "node ./node_modules/.bin/webpack --config webpack.config.prod",
     "dist-server": "NODE_ENV=prod node dist/server/server.js",
-    "start": "npm run dev-build && cp src/index.jade lib/ && (npm run watch-js & npm run dev-server & npm run server)",
+    "start": "npm run server",
     "build": "npm run clean && npm install && npm run dist-build && npm run dist-webpack"
   },
   "tags": [

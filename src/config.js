@@ -14,7 +14,7 @@ module.exports = {
     host: 'localhost'
   },
   devServer: {
-    port: 3000,
+    port: 5000,
     host: 'localhost'
   },
   filename: {
