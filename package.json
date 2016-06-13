@@ -13,10 +13,9 @@
     "dev-server": "node webpack.server.dev",
     "server": "nodemon lib/server/server",
     "eslint": "eslint -c .eslintrc src --quiet -f",
-    "dist-webpack": "node ./node_modules/.bin/webpack --config webpack.config.prod",
     "dist-server": "NODE_ENV=prod node dist/server/server.js",
     "start": "npm run dev-build && cp src/index.jade lib/ && (npm run watch-js & npm run dev-server & npm run server)",
-    "build": "npm run clean && npm install && npm run dist-build && npm run dist-webpack"
+    "build": "npm run clean && npm install && npm run dist-build && node ./node_modules/.bin/webpack --config webpack.config.com"
   },
   "tags": [
     "react",
@@ -82,7 +81,7 @@
     "extract-text-webpack-plugin": "0.9.1",
     "file-loader": "0.8.5",
     "jquery": "2.2.2",
-    "json-loader": "^0.5.4",
+    "json-loader": "0.5.4",
     "karma": "0.13.19",
     "karma-chrome-launcher": "0.2.2",
     "karma-cli": "0.1.2",
@@ -119,7 +118,8 @@
     "react": "0.14.8",
     "react-dom": "0.14.2",
     "react-router": "1.0.0",
+    "request": "2.69.0",
     "seamless-immutable": "5.1.0",
-    "request": "2.69.0"
+    "webpack-merge": "0.14.0"
   }
 }

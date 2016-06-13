@@ -1,7 +1,7 @@
 var config = require('./src/config');
 var WebpackDevServer = require('webpack-dev-server');
 var webpack = require('webpack');
-var webpackConfig = require('./webpack.config.dev');
+var webpackConfig = require('./webpack.config.com');
 
 var liveReload = config.liveReload;
 
